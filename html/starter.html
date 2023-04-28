@@ -65,7 +65,7 @@
 				</div>
 			  </div>
 			  <div id="page_titles_table">
-  <div id="page1"><div><input type="text" name="description" placeholder="page_title" value="Homepage"/></div><div id="radioButtons1"><div><input type="radio" name="radio1" class="radio" value="first" checked required></div><div><input type="radio" name="radio1" value="second" class="radio" required></div></div><div><input type="text" name="page_url" placeholder="page_url" /></div></div>
+  <div id="page1"><div><input type="text" name="description" placeholder="page_title" value="Homepage"/></div><div id="radioButtons1"><div><input type="radio" name="radio1" class="radio" value="first" checked required></div><div><input type="radio" name="radio1" value="second" class="radio" required></div></div><div><input type="url" name="page_url" placeholder="page_url" /></div></div>
 			  </div>
 			</div>
 		  </div>
@@ -118,6 +118,10 @@
 	    <div><button class="infosite_submitButton" type="submit" value="Submit" id="submit" name="submit" >Submit</button></div>
 	  </form>
 	</div>
+	<div class="hlayout">
+		<div class="messages-header">errors</div>
+		<div class="messages error-block"></div>
+  </div>
 	<br>
 	<div class="jsonOutputBox">
 		<pre id="jsonOutput">

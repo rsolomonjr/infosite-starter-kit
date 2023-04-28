@@ -1,3 +1,6 @@
+const { constant } = require("async");
+
+/* INFOSITE JSON SKELETON*/
 let json = {
 	"app": {
 		"app-server": {
@@ -267,7 +270,7 @@ let json = {
 		"modal": []
 };
 
-
+// 
 let jsonTracking = {
   "tracking": {
 		"RTS-timer": 5,
@@ -321,11 +324,6 @@ function changePages() {
     return false;
   }
 
-
-  function isValidUrl(url) {
-    let pattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-    return pattern.test(url);
-  }
 
 function pageObjUpdate(num, value){
   let route = "";
@@ -510,17 +508,34 @@ function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, 
 const form = document.getElementById('infosite_starter_form');
 
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault(); // Prevent the default form submission behavior
 
-  // Change to json.tracking on final draft
+form.addEventListener('submit', function(e) {
+ 
+   const errors = []; 
+
+   e.preventDefault(); // Prevent the default form submission behavior
+
 
   // SF-Number
   const sfnumber = document.getElementById('tracking_sfnumber').value;
 
-  json.app['app-server']['path'] = json.app['app-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
+  if(!testSFNumber(sfnumber)){
+    errors.push('<p class="error">Invalid sfNumber</p>');
+  }
+
+  if(errors.length > 0){
+    document.getElementsByClassName('error-block').innerHTML = errors;
+    return false;
+  } else {
+
+
+
+  let appServer = json.app['app-server']['path']; 
+  appServer = appServer.replace(/IS-template-22.10.5/g, sfnumber);
   
-  json.app['image-server']['path'] = json.app['image-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
+  let imageServer = json.app['image-server']['path']; 
+  imageServer = imageServer.replace(/IS-template-22.10.5/g, sfnumber);
+    
 
   json.tracking["SF-Number"] = sfnumber;
   json.tracking.brandName = document.getElementById('tracking_brandName').value;
@@ -530,23 +545,23 @@ form.addEventListener('submit', function(e) {
 
 
     // Get all input elements with the name "description"
-const descriptionInputs = document.getElementsByName("description");
-// Get all input elements with the name "first" or "second"
-const radioInputs = document.querySelectorAll("input[name='first'], input[name='second']");
-// Get all input elements with the name "page_url"
-const urlInputs = document.getElementsByName("page_url");
+  const descriptionInputs = document.getElementsByName("description");
+  // Get all input elements with the name "first" or "second"
+  const radioInputs = document.querySelectorAll("input[name='first'], input[name='second']");
+  // Get all input elements with the name "page_url"
+  const urlInputs = document.getElementsByName("page_url");
 
-// Define a multidimensional array to store the values
-const values = [];
+  // Define a multidimensional array to store the values
+  const values = [];
 
-// Loop through all the "description" inputs and push their values to the array
-for (let i = 0; i < descriptionInputs.length; i++) {
+  // Loop through all the "description" inputs and push their values to the array
+  for (let i = 0; i < descriptionInputs.length; i++) {
   const descriptionValue = descriptionInputs[i].value;
   values.push([descriptionValue]);
-}
+  }
 
-// Loop through all the radio inputs and push their values to the array
-for (let i = 0; i < radioInputs.length; i++) {
+  // Loop through all the radio inputs and push their values to the array
+  for (let i = 0; i < radioInputs.length; i++) {
   const radioValue = radioInputs[i].value;
   // Check if the array already contains an element for the current "description" input
   const index = i % descriptionInputs.length;
@@ -555,11 +570,11 @@ for (let i = 0; i < radioInputs.length; i++) {
   } else {
     values.push([null, radioValue]);
   }
-}
+  }
 
-  
-// Loop through all the "page_url" inputs and add their values to the array
-for (let i = 0; i < urlInputs.length; i++) {
+
+  // Loop through all the "page_url" inputs and add their values to the array
+  for (let i = 0; i < urlInputs.length; i++) {
   const urlValue = urlInputs[i].value;
   // Check if the array already contains an element for the current "description" input and radio button
   const index = i % (descriptionInputs.length * 2);
@@ -568,7 +583,7 @@ for (let i = 0; i < urlInputs.length; i++) {
   } else {
     values.push([null, null, urlValue]);
   }
-}
+  }
   
  //Format the JSON 
   let jsonArticleAllPages = [];
@@ -836,12 +851,13 @@ for (let i = 0; i < urlInputs.length; i++) {
   
   // Print the updated data
 
-  document.getElementById('jsonOutput').innerHTML = JSON.stringify(
-    json,
-    null, 
-    "\t"
-  );
-
+    document.getElementById('jsonOutput').innerHTML = JSON.stringify(
+      json,
+      null, 
+      "\t"
+    );
+    return true;
+  }
 });
 
 

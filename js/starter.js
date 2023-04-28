@@ -11,7 +11,7 @@ function changePages() {
       number.toString() +
       '" class="radio" checked></div><div><input type="radio"  name="radio' +
       number.toString() +
-      '" class="radio"></div><div><input type="text" id="page_url" name="page_url" placeholder="page_url" /></div></div>';
+      '" class="radio"></div><div><input type="url" id="page_url" name="page_url" placeholder="page_url" /></div></div>';
     number++;
   }
 

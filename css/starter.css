@@ -175,6 +175,45 @@ div[id*="radio"] {
   width: 100px;
 }
 
+.hlayout {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+
+
+  .messages .success{
+    border:1px sold green;
+    background-color:#dff0d8;
+    color: #3c763d;
+    border-color:#d6e9c6;
+    font-size:13px;
+    padding:5px;
+    word-wrap:break-word;
+  }
+  .messages .error{
+    background-color:#f2dede;
+    color: #a94442;
+    border-color:#ebccd1;
+    font-size:13px;
+    padding:5px;
+    word-wrap:break-word;
+    margin-bottom: 5px !important;
+  }
+  
+  .error-block {
+    width: 300px;
+    max-height: 515px;
+    border: 1px solid rgb(221, 221, 221);
+    margin-left: 15px;
+    text-align: center;
+    padding: 2px 5px 2px 5px;
+  }
+
+  p.error {
+    margin: 0 0 10px  
+  }
+
 @media screen and (max-width: 500px) {
   .infosite_tool_layout {
     font-size: 75%;
