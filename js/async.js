@@ -358,7 +358,7 @@ function navExternalPages(num, value, url){
       "module": "HtmlContentLink"
     }
 
-    if(num != 0 && url == ""){
+    if(num != 0 && url == null){
       link = {
         "label": value,
         "url": "/isarticle-"+num,
@@ -602,9 +602,12 @@ form.addEventListener('submit', function(e) {
 		.map(error => `<p class="errors">${error}</p>`)
 		.join('');
 
-		// document.getElementById('jsonOutput').innerHTML = '';
 	} else {
 		// App JSON Object
+		errors = [];
+		errorBlock.innerHTML = errors;
+		
+
 		json.app['app-server']['path'] = json.app['app-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
 		json.app['image-server']['path'] = json.app['image-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
 
