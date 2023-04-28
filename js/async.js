@@ -537,15 +537,13 @@ form.addEventListener('submit', function(e) {
 	}
 
 	function checkUrl(externalURL) {
-		if(externalURL == null) {
-			return null;
-		} else if (externalURL != null && !isValidURL(externalURL)){
+
+		if(!isValidURL(externalURL)){
 			errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
 			return errors;
 		} else {
-			return externalURL;
+			return true;
 		}
-	
 	}
 
 
@@ -573,7 +571,7 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-	// Loop through all the "page_url" inputs and add their values to the array
+	// // Loop through all the "page_url" inputs and add their values to the array
 	for (let i = 0; i < urlInputs.length; i++) {
 		const urlValue = urlInputs[i].value;
 
@@ -592,6 +590,7 @@ form.addEventListener('submit', function(e) {
 
 	if (errors.length > 0) {
 		errorBlock.innerHTML = errors.map((error) => `<p class="errors">${error}</p>`).join('');
+		window.scrollTo(0, 0);
 	} else {
 		// App JSON Object
 		errors = [];
