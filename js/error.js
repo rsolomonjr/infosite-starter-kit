@@ -37,7 +37,7 @@ function isValidBrandName(input) {
 
   function isValidURL(input) {
     // Check if the input is a valid URL
-    const regex = /^(http|https):\/\/[^ "]+$/;
+    const regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
     return regex.test(input);
   }
 
