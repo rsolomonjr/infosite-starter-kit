@@ -29,6 +29,8 @@ h6 {
   margin: 0.5em 0;
 }
 
+.flex-container {display: flex;}
+
 form {
   display: inline-block;
   text-align: left;
@@ -179,6 +181,8 @@ div[id*="radio"] {
   display: flex;
   flex-direction: column;
   border: 1px solid white;
+  text-align: center;
+  margin-top: 1em;
 }
 
 

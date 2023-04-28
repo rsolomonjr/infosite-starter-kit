@@ -1,4 +1,3 @@
-const { constant } = require("async");
 
 /* INFOSITE JSON SKELETON*/
 let json = {
@@ -511,33 +510,24 @@ const form = document.getElementById('infosite_starter_form');
 
 form.addEventListener('submit', function(e) {
  
-   const errors = []; 
-
+   
    e.preventDefault(); // Prevent the default form submission behavior
 
 
   // SF-Number
   const sfnumber = document.getElementById('tracking_sfnumber').value;
 
-  if(!testSFNumber(sfnumber)){
-    errors.push('<p class="error">Invalid sfNumber</p>');
-  }
-
-  if(errors.length > 0){
-    document.getElementsByClassName('error-block').innerHTML = errors;
-    return false;
-  } else {
 
 
-
-  let appServer = json.app['app-server']['path']; 
-  appServer = appServer.replace(/IS-template-22.10.5/g, sfnumber);
-  
-  let imageServer = json.app['image-server']['path']; 
-  imageServer = imageServer.replace(/IS-template-22.10.5/g, sfnumber);
+     let appServer = json.app['app-server']['path']; 
+    appServer = appServer.replace(/IS-template-22.10.5/g, sfnumber);
     
+    let imageServer = json.app['image-server']['path']; 
+    imageServer = imageServer.replace(/IS-template-22.10.5/g, sfnumber);
+      
 
-  json.tracking["SF-Number"] = sfnumber;
+    json.tracking["SF-Number"] = sfnumber;
+
   json.tracking.brandName = document.getElementById('tracking_brandName').value;
   json.tracking.brandId  = document.getElementById('tracking_brandId').value;
   json.tracking.CP["tacticId"] = document.getElementById('tracking_CP_tcid').value;
@@ -856,8 +846,6 @@ form.addEventListener('submit', function(e) {
       null, 
       "\t"
     );
-    return true;
-  }
 });
 
 
