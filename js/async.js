@@ -595,9 +595,7 @@ form.addEventListener('submit', function(e) {
 		// 	}
 		// }
 
-		 //Format the JSON 
-		 let jsonArticleAllPages = [];
-		 let jsonAllPages = [];
+
 
 	if(errors.length > 0){
 		errorBlock.innerHTML = errors
@@ -617,6 +615,10 @@ form.addEventListener('submit', function(e) {
 		json.tracking.CP["tacticId"] = tcid;
 		json.tracking.CP["activityId"] = activityId;
 
+		//Format the JSON 
+		let jsonArticleAllPages = [];
+		let jsonAllPages = [];
+		
 		function jsonPages(){
 			for (let i = 0; i < Object.keys(values).length; i++){
 			  let value = values[i];
