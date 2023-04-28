@@ -550,7 +550,7 @@ form.addEventListener('submit', function(e) {
 				}
 				return false;
 			} catch (error){
-				console.error(error);
+				errors.push(error);
 				// stop program execution with an error status code
 				throw new Error('Program stopped due to error');
 			}
