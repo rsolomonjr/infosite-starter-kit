@@ -366,7 +366,7 @@ function navExternalPages(num, value, url) {
 		};
 	} else if (num != 0 && url !== '') {
 		link = externalLink;
-	}
+	} 
 	return link;
 }
 
@@ -629,7 +629,7 @@ form.addEventListener('submit', function(e) {
 
 		json.pages = jsonArticleAllPages;
 		json.navigation = { links: jsonAllPages };
-
+		
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
 	}
 });
