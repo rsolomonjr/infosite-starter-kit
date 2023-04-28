@@ -79,14 +79,12 @@ form.addEventListener('submit', function(e) {
       let title = value[0];
       let url = value[1]; 
       
-      if(isTitleCase(title)){
+     
         let jsonPages = pageObjUpdate(i, title);
         jsonArticleAllPages.push(jsonPages);
-          let navExternalPage = navExternalPages(i, title, url);
-          jsonAllPages.push(navExternalPage);       
-      } else {
-        alert("Please enter a title that is title case.")
-      }
+        let navExternalPage = navExternalPages(i, title, url);
+        jsonAllPages.push(navExternalPage);       
+
     }
 
     return [jsonArticleAllPages, {links:jsonAllPages}]

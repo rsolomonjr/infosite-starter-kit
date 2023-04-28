@@ -315,15 +315,6 @@ function changePages() {
 }
 
 
-  function isTitleCase(text) {
-    // Check if each word starts with an uppercase letter and the rest are lowercase
-    if (/^([A-Z][a-z]*\s)*[A-Z][a-z]*$/.test(text)) {
-      return true;
-    }
-    return false;
-  }
-
-
 function pageObjUpdate(num, value){
   let route = "";
   let path = "";
@@ -509,71 +500,140 @@ const form = document.getElementById('infosite_starter_form');
 
 form.addEventListener('submit', function(e) {
 
-  const sfnumber = document.getElementById('tracking_sfnumber').value;
-  const brandName = document.getElementById('tracking_brandName').value;
-  const brandId = document.getElementById('tracking_brandId').value;
-  const tcid = document.getElementById('tracking_CP_tcid').value;
-  const activityId = document.getElementById('tracking_CP_activityId').value;
+	const sfnumber = document.getElementById('tracking_sfnumber').value;
+	const brandName = document.getElementById('tracking_brandName').value;
+	const brandId = document.getElementById('tracking_brandId').value;
+	const tcid = document.getElementById('tracking_CP_tcid').value;
+	const activityId = document.getElementById('tracking_CP_activityId').value;
 
-  const errorBlock = document.querySelector('.error-block');
+	// Get all input elements with the name "description"
+	const descriptionInputs = document.getElementsByName("description");
+	// Get all input elements with the name "first" or "second"
+	const radioInputs = document.querySelectorAll("input[name='first'], input[name='second']");
+	// Get all input elements with the name "page_url"
+	const urlInputs = document.getElementsByName("page_url");
 
-  e.preventDefault(); // Prevent the default form submission behavior
+	const errorBlock = document.querySelector('.error-block');
 
-  let errors = []; 
+		e.preventDefault(); // Prevent the default form submission behavior
 
-  
+	let errors = []; 
 
-    if(!testSFNumber(sfnumber)){
-      errors.push("Invalid SF-Number<br>Use format: xxxxxx.xx");
-    }  
+		if(!testSFNumber(sfnumber)){
+		errors.push("Invalid SF-Number<br>Use format: xxxxxx.xx");
+		}  
 
-    if(!isValidBrandName(brandName)){
-      errors.push("Invalid Brand Name");
-    }  
+		if(!isValidBrandName(brandName)){
+		errors.push("Invalid Brand Name");
+		}  
 
-    if(!isValidDepartmentID(brandId)){
-      errors.push("Invalid Department ID");
-    }  
+		if(!isValidDepartmentID(brandId)){
+		errors.push("Invalid Department ID");
+		}  
 
-    if(!isValidTacticID(tcid)){
-      errors.push("Invalid Tactic ID");
-    }  
+		if(!isValidTacticID(tcid)){
+		errors.push("Invalid Tactic ID");
+		}  
 
-    if(!isValidPromoID(activityId)){
-      errors.push("Invalid Promo Activity ID");
-    }  
+		if(!isValidPromoID(activityId)){
+		errors.push("Invalid Promo Activity ID");
+		}  
 
 
+		// Define a multidimensional array to store the values
+		const values = [];
 
-  if(errors.length > 0){
-    errorBlock.innerHTML = errors
-    .map(error => `<p class="errors">${error}</p>`)
-    .join('');
+		// Loop through all the "description" inputs and push their values to the array
+		for (let i = 0; i < descriptionInputs.length; i++) {
+			const descriptionValue = descriptionInputs[i].value;
+			if(!isTitleCase([descriptionValue])){
+				errors.push("Please enter a title<br>that is Title Case.");
+			} else {
+				values.push([descriptionValue]);
+			}
+		}
 
-    document.getElementById('jsonOutput').innerHTML = '';
-  } else {
-    // App JSON Object
-    json.app['app-server']['path'] = json.app['app-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
-    json.app['image-server']['path'] = json.app['image-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
+		// Loop through all the radio inputs and push their values to the array
+		for (let i = 0; i < radioInputs.length; i++) {
+			const radioValue = radioInputs[i].value;
+			// Check if the array already contains an element for the current "description" input
+			const index = i % descriptionInputs.length;
+			if (values[index]) {
+			values[index].push(radioValue);
+			} else {
+			values.push([null, radioValue]);
+			}	
+		}
 
-    // Tracking JSON Object
-    json.tracking["SF-Number"] = sfnumber;
-    json.tracking.brandName = brandName;
-    json.tracking.brandId  = brandId;
-    json.tracking.CP["tacticId"] = tcid;
-    json.tracking.CP["activityId"] = activityId;
+		  // Loop through all the "page_url" inputs and add their values to the array
+		  for (let i = 0; i < urlInputs.length; i++) {
+			const urlValue = urlInputs[i].value;
+			if(!isValidURL(urlValue)){
+				errors.push("Please enter a valid URL<br>starting with<br>http:// or https://");
+			} else {
+				// Check if the array already contains an element for the current "description" input and radio button
+				const index = i % (descriptionInputs.length * 2);
+				if (values[index]) {
+				values[index].push(urlValue);
+				} else {
+				values.push([null, null, urlValue]);
+				}
+			}
+		}
 
-    document.getElementById('jsonOutput').innerHTML = JSON.stringify(
-      json,
-      null, 
-      "\t"
-    );
+		 //Format the JSON 
+		 let jsonArticleAllPages = [];
+		 let jsonAllPages = [];
 
-  }
+	if(errors.length > 0){
+		errorBlock.innerHTML = errors
+		.map(error => `<p class="errors">${error}</p>`)
+		.join('');
 
-  
-  
+		// document.getElementById('jsonOutput').innerHTML = '';
+	} else {
+		// App JSON Object
+		json.app['app-server']['path'] = json.app['app-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
+		json.app['image-server']['path'] = json.app['image-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
 
+		// Tracking JSON Object
+		json.tracking["SF-Number"] = sfnumber;
+		json.tracking.brandName = brandName;
+		json.tracking.brandId  = brandId;
+		json.tracking.CP["tacticId"] = tcid;
+		json.tracking.CP["activityId"] = activityId;
+
+		function jsonPages(){
+			for (let i = 0; i < Object.keys(values).length; i++){
+			  let value = values[i];
+			  let title = value[0];
+			  let url = value[1]; 
+			  
+			 
+				 let jsonPages = pageObjUpdate(i, title);
+				 jsonArticleAllPages.push(jsonPages);
+				 let navExternalPage = navExternalPages(i, title, url);
+				 jsonAllPages.push(navExternalPage);       
+	  
+			}
+	  
+			return [jsonArticleAllPages, {links:jsonAllPages}]
+
+		 }
+
+		 jsonPages();
+
+		 json.pages = jsonArticleAllPages;
+		 json.navigation = {links:jsonAllPages};
+	  
+
+		document.getElementById('jsonOutput').innerHTML = JSON.stringify(
+		json,
+		null, 
+		"\t"
+		);
+
+	}
 
 });
 
