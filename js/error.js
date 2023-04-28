@@ -7,7 +7,7 @@ function testSFNumber(input) {
 
 function isValidBrandName(input) {
     // Check if the input is alphanumeric and starts with a capital letter
-    const regex = /^[A-Z0-9][A-Z0-9]*$/;
+    const regex = /^[A-Z][a-zA-Z-]*$/;
     return regex.test(input);
   }
 

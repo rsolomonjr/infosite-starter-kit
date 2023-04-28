@@ -507,40 +507,74 @@ function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, 
 const form = document.getElementById('infosite_starter_form');
 
 
-
 form.addEventListener('submit', function(e) {
- 
-   
-   e.preventDefault(); // Prevent the default form submission behavior
+
+  const sfnumber = document.getElementById('tracking_sfnumber').value;
+  const brandName = document.getElementById('tracking_brandName').value;
+  const brandId = document.getElementById('tracking_brandId').value;
+  const tcid = document.getElementById('tracking_CP_tcid').value;
+  const activityId = document.getElementById('tracking_CP_activityId').value;
+
+  const errorBlock = document.querySelector('.error-block');
+
+  e.preventDefault(); // Prevent the default form submission behavior
 
   let errors = []; 
 
-  // SF-Number
-  const sfnumber = document.getElementById('tracking_sfnumber').value;
+  
 
-  if( testSFNumber(sfnumber) == false){
-    errors.push("<p class='errors'>Invalid SF-Number</p>");
-  }  
+    if(!testSFNumber(sfnumber)){
+      errors.push("Invalid SF-Number<br>Use format: xxxxxx.xx");
+    }  
+
+    if(!isValidBrandName(brandName)){
+      errors.push("Invalid Brand Name");
+    }  
+
+    if(!isValidDepartmentID(brandId)){
+      errors.push("Invalid Department ID");
+    }  
+
+    if(!isValidTacticID(tcid)){
+      errors.push("Invalid Tactic ID");
+    }  
+
+    if(!isValidPromoID(activityId)){
+      errors.push("Invalid Promo Activity ID");
+    }  
+
+
 
   if(errors.length > 0){
-    // document.getElementsByClassName('error-block') = errors;
-    console.log(errors);
+    errorBlock.innerHTML = errors
+    .map(error => `<p class="errors">${error}</p>`)
+    .join('');
+
+    document.getElementById('jsonOutput').innerHTML = '';
   } else {
-    let appServer = json.app['app-server']['path']; 
-    appServer = appServer.replace(/IS-template-22.10.5/g, sfnumber);
+    // App JSON Object
+    json.app['app-server']['path'] = json.app['app-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
+    json.app['image-server']['path'] = json.app['image-server']['path'].replace(/IS-template-22.10.5/g, sfnumber);
 
-    let imageServer = json.app['image-server']['path']; 
-    imageServer = imageServer.replace(/IS-template-22.10.5/g, sfnumber);
-  }
-
-  
-  
+    // Tracking JSON Object
+    json.tracking["SF-Number"] = sfnumber;
+    json.tracking.brandName = brandName;
+    json.tracking.brandId  = brandId;
+    json.tracking.CP["tacticId"] = tcid;
+    json.tracking.CP["activityId"] = activityId;
 
     document.getElementById('jsonOutput').innerHTML = JSON.stringify(
       json,
       null, 
       "\t"
     );
+
+  }
+
+  
+  
+
+
 });
 
 

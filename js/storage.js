@@ -1,5 +1,6 @@
 const form = document.getElementById('infosite_starter_form');
 
+
 form.addEventListener('submit', function(e) {
  
    

@@ -195,7 +195,7 @@ div[id*="radio"] {
     padding:5px;
     word-wrap:break-word;
   }
-  .messages .error{
+  .messages .errors{
     background-color:#f2dede;
     color: #a94442;
     border-color:#ebccd1;
@@ -214,7 +214,7 @@ div[id*="radio"] {
     padding: 2px 5px 2px 5px;
   }
 
-  p.error {
+  p.errors {
     margin: 0 0 10px  
   }
 
