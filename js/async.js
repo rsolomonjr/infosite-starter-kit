@@ -543,43 +543,57 @@ form.addEventListener('submit', function(e) {
 		// Define a multidimensional array to store the values
 		const values = [];
 
+		function checkTitles(titleDescription) {
+			try{
+				if(!isTitleCase(titleDescription)) {
+					throw new Error("Please enter a title<br>that is Title Case.");
+				}
+				return false;
+			} catch (error){
+				console.error(error);
+				// stop program execution with an error status code
+				throw new Error('Program stopped due to error');
+			}
+		}
+
 		// Loop through all the "description" inputs and push their values to the array
 		for (let i = 0; i < descriptionInputs.length; i++) {
 			const descriptionValue = descriptionInputs[i].value;
-			if(!isTitleCase([descriptionValue])){
-				errors.push("Please enter a title<br>that is Title Case.");
-			} else {
+			try{
+				checkTitles(descriptionValue);
 				values.push([descriptionValue]);
+			} catch (error) {
+					break;
 			}
 		}
 
 		// Loop through all the radio inputs and push their values to the array
-		for (let i = 0; i < radioInputs.length; i++) {
-			const radioValue = radioInputs[i].value;
-			// Check if the array already contains an element for the current "description" input
-			const index = i % descriptionInputs.length;
-			if (values[index]) {
-			values[index].push(radioValue);
-			} else {
-			values.push([null, radioValue]);
-			}	
-		}
+		// for (let i = 0; i < radioInputs.length; i++) {
+		// 	const radioValue = radioInputs[i].value;
+		// 	// Check if the array already contains an element for the current "description" input
+		// 	const index = i % descriptionInputs.length;
+		// 	if (values[index]) {
+		// 	values[index].push(radioValue);
+		// 	} else {
+		// 	values.push([null, radioValue]);
+		// 	}	
+		// }
 
 		  // Loop through all the "page_url" inputs and add their values to the array
-		  for (let i = 0; i < urlInputs.length; i++) {
-			const urlValue = urlInputs[i].value;
-			if(!isValidURL(urlValue)){
-				errors.push("Please enter a valid URL<br>starting with<br>http:// or https://");
-			} else {
-				// Check if the array already contains an element for the current "description" input and radio button
-				const index = i % (descriptionInputs.length * 2);
-				if (values[index]) {
-				values[index].push(urlValue);
-				} else {
-				values.push([null, null, urlValue]);
-				}
-			}
-		}
+		//   for (let i = 0; i < urlInputs.length; i++) {
+		// 	const urlValue = urlInputs[i].value;
+		// 	if(!isValidURL(urlValue)){
+		// 		errors.push("Please enter a valid URL<br>starting with<br>http:// or https://");
+		// 	} else {
+		// 		// Check if the array already contains an element for the current "description" input and radio button
+		// 		const index = i % (descriptionInputs.length * 2);
+		// 		if (values[index]) {
+		// 		values[index].push(urlValue);
+		// 		} else {
+		// 		values.push([null, null, urlValue]);
+		// 		}
+		// 	}
+		// }
 
 		 //Format the JSON 
 		 let jsonArticleAllPages = [];
