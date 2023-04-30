@@ -1,8 +1,12 @@
 // ERROR CHECKING
 
 function testSFNumber(input) {
-    const regex = /^\d{6,7}\.\d{1,2}$/;
+    if(input != null || input != '') {
+    const regex = /^\d+\.\d+[A-Za-z]{0,99}$/g;
     return regex.test(input);
+    } else {
+      return false
+    }
 }
 
 function isValidBrandName(input) {
@@ -13,19 +17,19 @@ function isValidBrandName(input) {
 
   function isValidDepartmentID(input) {
     // Check if the input has no more than five numbers and no non-numeric characters
-    const regex = /^\d{0,4}$/;
+    const regex = /^\d{4}$/;
     return regex.test(input);
   }
 
   function isValidTacticID(input) {
-    // Check if the input has no more than five numbers and no non-numeric characters
-    const regex = /^\d{0,6}$/;
+    // Check if the input has five or six numbers and no non-numeric characters
+    const regex = /^\d{5,6}$/;
     return regex.test(input);
   }
 
   function isValidPromoID(input) {
-    // Check if the input has no more than five numbers and no non-numeric characters
-    const regex = /^\d{0,5}$/;
+    // Check if the input has five or six numbers and no non-numeric characters
+    const regex = /^\d{5,6}$/;
     return regex.test(input);
   }
 
@@ -56,25 +60,13 @@ function isValidBrandName(input) {
     return regex.test(input);
   }
 
-  function isValidVideoTitle(input) {
+  function isValidTitle(input) {
     // Check if the input is alphanumeric and starts with a capital letter
     const regex = /^[A-Z0-9][A-Z0-9]*$/;
     return regex.test(input);
   }
 
-  function isValidAudioTitle(input) {
-    // Check if the input is alphanumeric and starts with a capital letter
-    const regex = /^[A-Z0-9][A-Z0-9]*$/;
-    return regex.test(input);
-  }
-
-  function isValidVideoLength(input) {
-    // Check if the input is a valid video length in the format 00:00
-    const regex = /^([0-5]?\d):([0-5]\d)$/;
-    return regex.test(input);
-  }
-
-  function isValidAudioLength(input) {
+  function isValidMediaLength(input) {
     // Check if the input is a valid video length in the format 00:00
     const regex = /^([0-5]?\d):([0-5]\d)$/;
     return regex.test(input);
@@ -82,6 +74,6 @@ function isValidBrandName(input) {
 
   function isImageFile(input) {
     // Check if the input ends with .png, .jpg, or .jpeg
-    const regex = /\.(png|jpg|jpeg)$/i;
+    const regex = /[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
     return regex.test(input);
   }

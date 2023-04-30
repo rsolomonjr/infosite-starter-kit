@@ -483,6 +483,9 @@ function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, 
 const form = document.getElementById('infosite_starter_form');
 
 form.addEventListener('submit', function(e) {
+	
+	/* Declarations */
+
 	const sfnumber = document.getElementById('tracking_sfnumber').value;
 	const brandName = document.getElementById('tracking_brandName').value;
 	const brandId = document.getElementById('tracking_brandId').value;
@@ -496,31 +499,64 @@ form.addEventListener('submit', function(e) {
 	// Get all input elements with the name "page_url"
 	const urlInputs = document.getElementsByName('page_url');
 
+
+	//Sponsor Text
+	let sponsorText = document.getElementById('sponsorship').value;
+
+	//Polls
+	var numberOfPolls = parseFloat(form.elements.form_ids.value);
+
+   const qNaID = form.elements.poll_id.value;
+
+	// Videos
+	const titleOfVideoInputs = document.getElementsByName("video_title");
+	const thumbnailImageInputs = document.getElementsByName("video_thumbnail_image_name");
+	const posterImageInputs = document.getElementsByName("video_poster_image_name");
+	const videoDurationInputs = document.getElementsByName("video_duration");
+
+	// Audio/Podcast
+	const titleOfAudioInputs = document.getElementsByName("audio_title");
+	const audioThumbnailImageInputs = document.getElementsByName("audio_thumbnail_image_name");
+	const audioPosterImageInputs = document.getElementsByName("audio_poster_image_name");
+	const audioDurationInputs = document.getElementsByName("audio_duration");
+
+
+	//Error HTML Block
 	const errorBlock = document.querySelector('.error-block');
+
 
 	e.preventDefault(); // Prevent the default form submission behavior
 
 	let errors = [];
 
 	if (!testSFNumber(sfnumber)) {
-		errors.push('Invalid SF-Number<br>Use format: xxxxxx.xx');
+		errors.push('Invalid SF-Number<br>Number format: xxxxxx.xx');
 	}
 
 	if (!isValidBrandName(brandName)) {
-		errors.push('Invalid Brand Name');
+		errors.push('Invalid Brand Name<br>Alphanumeric<br>and must begin<br>with a capital letter.');
 	}
 
 	if (!isValidDepartmentID(brandId)) {
-		errors.push('Invalid Department ID');
+		errors.push('Invalid Department ID<br>4 digits only.');
 	}
 
 	if (!isValidTacticID(tcid)) {
-		errors.push('Invalid Tactic ID');
+		errors.push('Invalid Tactic ID<br>5 to 6 numbers only.');
 	}
 
 	if (!isValidPromoID(activityId)) {
-		errors.push('Invalid Promo Activity ID');
+		errors.push('Invalid Promo Activity ID<br>5 to 6 numbers only.');
 	}
+
+	if (!isValidPharma(sponsorText)) {
+		errors.push('Invalid Sponsorship text<br>Letters only.');
+	}
+
+	if (!isValidPollID(qNaID)) {
+		errors.push('Invalid Poll ID<br>Numbers only<br>Max 5.');
+	}
+
 
 	// Define a multidimensional array to store the values
 	const values = [];
@@ -588,6 +624,144 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
+	// Playlist Video and Audio Section //
+
+	function checkTitle(playlistTitle) {
+		if(!isValidTitle(playlistTitle)){
+			errors.push('Invalid title<br>Alphanumeric<br>and must begin<br>with a capital letter.');
+			return errors;
+		} else {
+			return true;
+		}
+	}
+	
+	function checkImage(imageFile) {
+		if(!isImageFile(imageFile)){
+			errors.push('Invalid image format<br>Must end with .png, .jpg, or .jpeg.');
+			return errors;
+		} else {
+			return true;
+		}
+	}
+
+	function checkMedia(mediaLength) {
+		if(!isValidMediaLength(mediaLength)){
+			errors.push('Invalid media time<br>Format 00:00.');
+			return errors;
+		} else {
+			return true;
+		}
+	}
+
+
+	const videoThumbnails = [];
+	const videoPosters = []; 
+
+	for (let i = 0; i < titleOfVideoInputs.length; i++) {
+		const titleOfVideoValue = titleOfVideoInputs[i].value;
+		try {
+			isValidTitle(titleOfVideoValue);
+			videoThumbnails.push([titleOfVideoValue]);
+			videoPosters.push([titleOfVideoValue]);
+		} catch (error) {
+			break;
+		}
+	 }
+	 
+	 for (let i = 0; i < thumbnailImageInputs.length; i++) {
+		const thumbnailValue = thumbnailImageInputs[i].value;
+		try {
+			checkImage(thumbnailValue);
+
+			const index = i % thumbnailImageInputs.length;
+			videoThumbnails[index].push(thumbnailValue);
+		} catch (error){
+			break;
+		}
+
+	 }
+  
+	 for (let i = 0; i < posterImageInputs.length; i++) {
+		const posterValue = posterImageInputs[i].value;
+
+		try {
+			checkImage(posterValue);
+			
+			const index = i % posterImageInputs.length;
+			videoPosters[index].push(posterValue);
+		} catch (error){
+			break;
+		}
+		
+	 }
+  
+	 for (let i = 0; i < videoDurationInputs.length; i++) {
+		const durationValue = videoDurationInputs[i].value;
+
+		try {
+			checkMedia(durationValue);
+			
+			const index = i % videoDurationInputs.length;
+			videoPosters[index].push(durationValue);
+		} catch (error){
+			break;
+		}
+
+	 }
+
+
+	 const allaudioThumbnails = [];
+	 const allaudioPosters = []; 
+
+	 for (let i = 0; i < titleOfAudioInputs.length; i++) {
+		const titleOfAudioValue = titleOfAudioInputs[i].value;
+		try {
+			isValidTitle(titleOfAudioValue);
+			allaudioThumbnails.push([titleOfAudioValue]);
+			allaudioPosters.push([titleOfAudioValue]);
+		} catch (error) {
+			break;
+		}
+	 }
+
+	 for (let i = 0; i < audioThumbnailImageInputs.length; i++) {
+		const thumbnailValue = audioThumbnailImageInputs[i].value;
+		try {
+			checkImage(thumbnailValue);
+			
+			const index = i % audioThumbnailImageInputs.length;
+			allaudioThumbnails[index].push(thumbnailValue);
+		} catch (error){
+			break;
+		}
+	 }
+  
+	 for (let i = 0; i < audioPosterImageInputs.length; i++) {
+		const audioposterValue = audioPosterImageInputs[i].value;
+		try {
+			checkImage(audioposterValue);
+			
+			const index = i % audioPosterImageInputs.length;
+			allaudioPosters[index].push(audioposterValue);
+		} catch (error){
+			break;
+		}
+	 }
+  
+	 for (let i = 0; i < audioDurationInputs.length; i++) {
+		const audiodurationValue = audioDurationInputs[i].value;
+		
+		try {
+			checkMedia(audiodurationValue);
+			
+			const index = i % audioDurationInputs.length;
+			allaudioPosters[index].push(audiodurationValue);
+		} catch (error){
+			break;
+		}
+
+	 }
+
 	if (errors.length > 0) {
 		errorBlock.innerHTML = errors.map((error) => `<p class="errors">${error}</p>`).join('');
 		window.scrollTo(0, 0);
@@ -629,6 +803,164 @@ form.addEventListener('submit', function(e) {
 
 		json.pages = jsonArticleAllPages;
 		json.navigation = { links: jsonAllPages };
+
+		let questionnaire = []; 
+
+
+		function createPollJson(num) {
+
+			let polls = {
+			  "config-id": "poll" + num,
+			  "title": "Poll",
+			  "questionnaire-id": qNaID,
+			  "form-id": num,
+			  "ui-configs": {
+				 "question-numbers": {
+					"enable": false,
+					"text": "{{counter}}."
+				 },
+				 "select": {
+					"label": true,
+					"props": {
+					  "autoWidth": true,
+					  "variant": "standard"
+					}
+				 },
+				 "textfield": {
+					"label": true,
+					"props": {
+					  "variant": "standard",
+					  "rows": 4
+					}
+				 },
+				 "response-message": {
+					"enable": false,
+					"text": "Thank You"
+				 },
+				 "submit-button": {
+					"label": "Submit"
+				 }
+			  }
+			}
+	  
+				return polls;
+			 
+		  }
+		
+		 for(let i=1;i <= numberOfPolls; i++){
+			let pollObject = createPollJson(i);
+			questionnaire.push(pollObject);  
+		 }
+	  
+		 json.polls = questionnaire;
+
+		
+
+		// // Replace all occurrences of "Pharma Co." with the sponsor text
+		json['medscape-header']['sponsored-message']['html-content'] = json['medscape-header']['sponsored-message']['html-content'].replace(/Pharma Co/g, sponsorText);
+
+		// Videos
+
+		let jsonAllVideoThumbs = [];
+		let jsonAllVideoPosters = [];
+
+
+		let numberVideoThumbs = 1; 
+		function allVideoThumbnails(){
+		for (let i = 0; i < videoThumbnails.length; i++){
+		let videoThumbnail = videoThumbnails[i];
+		let videoTitle = videoThumbnail[0];
+		let thumb = videoThumbnail[1]; 
+
+
+		let videoThumbs = videoThumbnailUpdate(
+		numberVideoThumbs, 
+		sfnumber, 
+		videoTitle, 
+		thumb
+		);
+		jsonAllVideoThumbs.push(videoThumbs);  
+		numberVideoThumbs++;
+		}
+		return jsonAllVideoThumbs;
+		}
+
+		let numberVideoPosters = 1; 
+		function allVideoPosters(){
+		for (let i = 0; i < videoPosters.length; i++){
+		let videoPoster = videoPosters[i];
+		let videoPosterTitle = videoPoster[0];
+		let poster = videoPoster[1]; 
+		let videoDuration = videoPoster[2]; 
+
+		let videoMediaPosters = videoPosterUpdate(
+		numberVideoPosters, 
+		sfnumber, 
+		videoPosterTitle, 
+		poster, 
+		videoDuration
+		);
+		jsonAllVideoPosters.push(videoMediaPosters);  
+		numberVideoPosters++;
+		}
+		return jsonAllVideoPosters;
+		}
+
+		allVideoThumbnails();
+		allVideoPosters();
+
+		let playlists = json["media-player"]["playlists"];
+		let playlist = playlists.find(p => p["config-id"] === "playlist-1");
+
+		let jsonAllAudioThumbs = [];
+		let jsonAllAudioPosters = [];
+	 
+		let numberaudioThumbs = 1; 
+		function allAudioThumbnails(){
+		  for (let i = 0; i < allaudioThumbnails.length; i++){
+			 let audioThumbnail = allaudioThumbnails[i];
+			 let audioTitle = audioThumbnail[0];
+			 let audioThumb = audioThumbnail[1]; 
+			 
+	 
+				let audioThumbs = audioThumbnailUpdate(
+				  numberaudioThumbs, 
+				  sfnumber, 
+				  audioTitle, 
+				  audioThumb
+				);
+				jsonAllAudioThumbs.push(audioThumbs);  
+				numberaudioThumbs++;
+		  }
+		  return jsonAllAudioThumbs;
+		}
+	 
+		let numberaudioPosters = 1; 
+		function allAudioPosters(){
+		  for (let i = 0; i < allaudioPosters.length; i++){
+			 let audioPosterVar = allaudioPosters[i];
+			 let audioPosterTitle = audioPosterVar[0];
+			 let audioPosterImg = audioPosterVar[1]; 
+			 let audioDuration = audioPosterVar[2]; 
+	 
+				let audioMediaPosters = audioPosterUpdate(
+				  numberaudioPosters, 
+				  sfnumber, 
+				  audioPosterTitle, 
+				  audioPosterImg, 
+				  audioDuration
+				);
+				jsonAllAudioPosters.push(audioMediaPosters);  
+				numberaudioPosters++;
+		  }
+		  return jsonAllAudioPosters;
+		}
+	 
+		allAudioThumbnails();
+		allAudioPosters();
+	 
+		playlist["playlist-items"].push(jsonAllVideoThumbs, jsonAllAudioThumbs);
+		json['media-player'].medias = [jsonAllVideoPosters, jsonAllAudioPosters];
 		
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
 	}
