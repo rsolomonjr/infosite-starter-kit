@@ -557,7 +557,7 @@ form.addEventListener('submit', function(e) {
 		errors.push('Invalid Poll ID<br>Numbers only<br>Max 5.');
 	}
 
-
+	
 	// Define a multidimensional array to store the values
 	const values = [];
 
@@ -603,26 +603,26 @@ form.addEventListener('submit', function(e) {
 		if (values[index]) {
 			values[index].push(radioValue);
 		} else {
-			values.push([ null, radioValue ]);
+			values.push([ null, radioValue ]);			
 		}
 	}
 
 	// // Loop through all the "page_url" inputs and add their values to the array
-	for (let i = 0; i < urlInputs.length; i++) {
-		const urlValue = urlInputs[i].value;
-
-		try {
-			checkUrl(urlValue);
-			const index = i % (descriptionInputs.length * 2);
-			if (values[index]) {
-				values[index].push(urlValue);
-			} else {
-				values.push([ null, null, urlValue ]);
+		
+		for (let i = 1; i < urlInputs.length; i++) {
+			const urlValue = urlInputs[i].value;
+			try {
+					checkUrl(urlValue);
+					const index = i % (descriptionInputs.length * 2);
+					if (values[index]) {
+						values[index].push(urlValue);
+					} else {
+						values.push([ null, null, urlValue ]);
+					}
+				} catch (error) {
+					break;
+				}
 			}
-		} catch (error) {
-			break;
-		}
-	}
 
 	// Playlist Video and Audio Section //
 
@@ -660,7 +660,7 @@ form.addEventListener('submit', function(e) {
 	for (let i = 0; i < titleOfVideoInputs.length; i++) {
 		const titleOfVideoValue = titleOfVideoInputs[i].value;
 		try {
-			isValidTitle(titleOfVideoValue);
+			checkTitle(titleOfVideoValue);
 			videoThumbnails.push([titleOfVideoValue]);
 			videoPosters.push([titleOfVideoValue]);
 		} catch (error) {

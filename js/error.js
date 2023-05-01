@@ -33,6 +33,7 @@ function isValidBrandName(input) {
     return regex.test(input);
   }
 
+
   function isTitleCase(input) {
     // Check if each word starts with an uppercase letter and the rest are lowercase
     const regex = /^([A-Z][a-z]*\s)*[A-Z][a-z]*$/;
@@ -40,9 +41,6 @@ function isValidBrandName(input) {
   }
 
   function isValidURL(input) {
-    if(input == null || input == ''){
-      return true
-    } ;
     // Check if the input is a valid URL
     const regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
     return regex.test(input);
