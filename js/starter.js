@@ -7,11 +7,13 @@ function changePages() {
 
   while (number <= numberSelected) {
     descriptionTitle +=
-      '<div><div><input type="text" id="description" name="description" placeholder="page_title"/></div><div><input type="radio" name="radio' +
+      '<div><div><input type="text" id="description" name="description" placeholder="page_title" value="Homepage" required/></div><div id="radio_button_set' +
       number.toString() +
-      '" class="radio" checked></div><div><input type="radio"  name="radio' +
+      '"><div><input type="radio" name="radio' +
       number.toString() +
-      '" class="radio"></div><div><input type="url" id="page_url" name="page_url" placeholder="page_url" /></div></div>';
+      '" class="radio" value="internal"></div><div><input type="radio"  name="radio' +
+      number.toString() +
+      '" class="radio" value="external"></div></div><div><input type="url" id="page_url" name="page_url" placeholder="page_url" /></div></div>';
     number++;
   }
 

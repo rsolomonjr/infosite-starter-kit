@@ -174,7 +174,7 @@ form > div:last-of-type{
 
 div[id*="radio"] {
   display: flex;
-  width: 100px;
+  flex: 0 0 8rem;
 }
 
 .hlayout {

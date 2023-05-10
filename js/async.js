@@ -293,31 +293,6 @@ let jsonTracking = {
 	}
 };
 
-let selector = document.getElementsByName('number_of_pages')[0];
-
-function changePages() {
-	let numberSelected = parseInt(selector[selector.selectedIndex].value);
-
-	let number = 1;
-	let descriptionTitle = '';
-
-	while (number <= numberSelected) {
-		descriptionTitle +=
-			'<div id="page' +
-			number +
-			'"><div><input type="text" name="description" placeholder="page_title" value="Homepage"/></div><div id="radioButtons' +
-			number.toString() +
-			'"><div><input type="radio" name="radio' +
-			number.toString() +
-			'" class="radio" value="first" checked required></div><div><input type="radio"  name="radio' +
-			number.toString() +
-			'" class="radio" value="second" required></div></div><div><input type="text" name="page_url" placeholder="page_url" /></div></div>';
-		number++;
-	}
-
-	document.getElementById('page_titles_table').innerHTML = descriptionTitle;
-}
-
 function pageObjUpdate(num, value) {
 	let route = '';
 	let path = '';
@@ -342,7 +317,7 @@ function pageObjUpdate(num, value) {
 	return page;
 }
 
-function navExternalPages(num, value, url) {
+function navExternalPages(num, value, checked, url) {
 	let link = {
 		label: value,
 		url: '/',
@@ -357,15 +332,15 @@ function navExternalPages(num, value, url) {
 		module: 'HtmlContentLink'
 	};
 
-	if (num != 0 && url == null) {
+	if (num != 0 && checked === 'internal') {
 		link = {
 			label: value,
 			url: '/isarticle-' + num,
 			target: '_self',
 			module: 'RouterLink'
 		};
-	} else if (num != 0 && url !== '') {
-		link = externalLink;
+	} else if (num != 0 && checked === 'external') {
+			link = externalLink;
 	} 
 	return link;
 }
@@ -494,8 +469,8 @@ form.addEventListener('submit', function(e) {
 
 	// Get all input elements with the name "description"
 	const descriptionInputs = document.getElementsByName('description');
-	// Get all input elements with the name "first" or "second"
-	const radioInputs = document.querySelectorAll("input[name='first'], input[name='second']");
+	// Get all input elements with the name "internal" or "external"
+	const radioInputs = document.querySelectorAll("input[type='radio']:checked");
 	// Get all input elements with the name "page_url"
 	const urlInputs = document.getElementsByName('page_url');
 
@@ -595,11 +570,11 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-	// // Loop through all the radio inputs and push their values to the array
+	// Loop through all the radio inputs and push their values to the array
 	for (let i = 0; i < radioInputs.length; i++) {
 		const radioValue = radioInputs[i].value;
 		// Check if the array already contains an element for the current "description" input
-		const index = i % descriptionInputs.length;
+		const index = i % (descriptionInputs.length * 2);
 		if (values[index]) {
 			values[index].push(radioValue);
 		} else {
@@ -607,10 +582,15 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
+
+
+	
+
 	// // Loop through all the "page_url" inputs and add their values to the array
 		
 		for (let i = 1; i < urlInputs.length; i++) {
 			const urlValue = urlInputs[i].value;
+			
 			try {
 					checkUrl(urlValue);
 					const index = i % (descriptionInputs.length * 2);
@@ -624,11 +604,40 @@ form.addEventListener('submit', function(e) {
 				}
 			}
 
+			function isStringNullOrEmpty(str) {
+				return str === null || str.trim() === '';
+			 }
+			 
+			 function isStringWithValue(str) {
+				return str !== null && str !== undefined && str.trim() !== '';
+			 }
+
+		// Check if URL is empty or null
+		for (let i = 0; i < Object.keys(values).length; i++) {
+				let urlCheck = values[i];
+				let radioChecked = urlCheck[1];
+				let urlEntered = urlCheck[2];
+				if(radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
+					errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
+				}	
+					
+		}
+
+		for (let i = 0; i < Object.keys(values).length; i++) {
+			let buttonCheck = values[i];
+			let buttonChecked = buttonCheck[1];
+			let urlisEntered = buttonCheck[2];
+			if(buttonChecked === 'internal' && isStringWithValue(urlisEntered)){
+				errors.push('For external URL use<br>Please select the second of the two buttons.');
+			}					
+		}
+	
+
 	// Playlist Video and Audio Section //
 
 	function checkTitle(playlistTitle) {
 		if(!isValidTitle(playlistTitle)){
-			errors.push('Invalid title<br>Alphanumeric<br>and must begin<br>with a capital letter.');
+			errors.push('Invalid title<br>Must begin<br>with a capital letter.');
 			return errors;
 		} else {
 			return true;
@@ -716,7 +725,7 @@ form.addEventListener('submit', function(e) {
 	 for (let i = 0; i < titleOfAudioInputs.length; i++) {
 		const titleOfAudioValue = titleOfAudioInputs[i].value;
 		try {
-			isValidTitle(titleOfAudioValue);
+			checkTitle(titleOfAudioValue);
 			allaudioThumbnails.push([titleOfAudioValue]);
 			allaudioPosters.push([titleOfAudioValue]);
 		} catch (error) {
@@ -783,17 +792,21 @@ form.addEventListener('submit', function(e) {
 		//Format the JSON
 		let jsonArticleAllPages = [];
 		let jsonAllPages = [];
-
+		
 		function jsonPages() {
+			
 			for (let i = 0; i < Object.keys(values).length; i++) {
 				let value = values[i];
 				let title = value[0];
-				let url = value[1];
+				let radio = value[1];
+				let url = value[2];
 
 				let jsonPages = pageObjUpdate(i, title);
 				jsonArticleAllPages.push(jsonPages);
-				let navExternalPage = navExternalPages(i, title, url);
-				jsonAllPages.push(navExternalPage);
+			
+					let navExternalPage = navExternalPages(i, title, radio, url);
+					jsonAllPages.push(navExternalPage);
+						
 			}
 
 			return [ jsonArticleAllPages, { links: jsonAllPages } ];

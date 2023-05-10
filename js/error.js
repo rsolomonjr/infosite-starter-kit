@@ -11,7 +11,7 @@ function testSFNumber(input) {
 
 function isValidBrandName(input) {
     // Check if the input is alphanumeric and starts with a capital letter
-    const regex = /^[A-Z][a-zA-Z-]*$/;
+    const regex = /^[A-Z][a-zA-Z0-9]*$/;
     return regex.test(input);
   }
 
@@ -42,7 +42,7 @@ function isValidBrandName(input) {
 
   function isValidURL(input) {
     // Check if the input is a valid URL
-    const regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    const regex = /^(https?:\/\/)?([\w.-]+)?\.?([a-z]{2,})?(:\d{1,5})?([\/?#]\S*)?$/i;
     return regex.test(input);
   }
 
@@ -60,7 +60,7 @@ function isValidBrandName(input) {
 
   function isValidTitle(input) {
     // Check if the input is alphanumeric and starts with a capital letter
-    const regex = /^[A-Z0-9][A-Z0-9]*$/;
+    const regex = /^[A-Z].*/;
     return regex.test(input);
   }
 
