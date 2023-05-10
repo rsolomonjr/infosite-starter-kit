@@ -22,36 +22,37 @@ function changePages() {
 
 function getNumberOfVideos() {
   const videoTable =
-    "<div class='media_table'><div><input type='text' id='video_title' name='video_title' placeholder='video_title'/></div><div><input type='text' id='video_thumbnail_image_name' name='video_thumbnail_image_name' placeholder='video_thumbnail_image_name'/></div><div><input type='text' id='video_poster_image_name' name='video_poster_image_name' placeholder='video_poster_image_name'/></div><div><input type='text' id='video_duration' name='video_duration' placeholder='video_duration' /></div></div>";
-  const errorText = "<dir class='errorText'>Numbers only</dir>";
+    "<div class='media_table'><div><input type='text' id='video_title' name='video_title' placeholder='video_title' value='Title'/></div><div><input type='text' id='video_thumbnail_image_name' name='video_thumbnail_image_name' placeholder='video_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_poster_image_name' name='video_poster_image_name' placeholder='video_poster_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_duration' name='video_duration' placeholder='video_duration' /></div></div>";
+  const errorText = "<dir class='errorText'>Please enter a number</dir>";
 
   var selector = document.getElementById("number_of_videos");
-  var value = parseInt(selector.value);
+  
+    var value = parseInt(selector.value);
 
-  if (isNaN(value) || value == "") {
-    document.getElementById("videos_table").innerHTML = errorText;
-  } else {
-    let arr = Array.from(new Array(value), (_, index) => index + 1);
+    if (isNaN(value) || null) {
+      document.getElementById("videos_table").innerHTML = errorText;
+    } else {
+      let arr = Array.from(new Array(value), (_, index) => index + 1);
 
-    arr = arr.map((i) => "Video " + i);
+      arr = arr.map((i) => "Video " + i);
 
-    let videosTable = arr.map(function (element) {
-      return `<div>${element}</div>`.concat(videoTable);
-    });
-    let videosOutTable = videosTable.join("");
-    document.querySelector("#videos_table").innerHTML = videosOutTable;
+      let videosTable = arr.map(function (element) {
+        return `<div>${element}</div>`.concat(videoTable);
+      });
+      let videosOutTable = videosTable.join("");
+      document.querySelector("#videos_table").innerHTML = videosOutTable;
+    }
   }
-}
 
 function getNumberOfAudio() {
   const audioTable =
-    "<div class='media_table'><div><input type='text' id='audio_title' name='audio_title' placeholder='audio_title'/></div><div><input type='text' id='audio_thumbnail_image_name' name='audio_thumbnail_image_name' placeholder='audio_thumbnail_image_name'/></div><div><input type='text' id='audio_poster_image_name' name='audio_poster_image_name' placeholder='audio_poster_image_name'/></div><div><input type='text' id='audio_duration' name='audio_duration' placeholder='audio_duration' /></div></div>";
-  const errorText = "<dir class='errorText'>Numbers only</dir>";
+    "<div class='media_table'><div><input type='text' id='audio_title' name='audio_title' placeholder='audio_title' value='Title'/></div><div><input type='text' id='audio_thumbnail_image_name' name='audio_thumbnail_image_name' placeholder='audio_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='audio_poster_image_name' name='audio_poster_image_name' placeholder='audio_poster_image_name'/></div><div><input type='text' id='audio_duration' name='audio_duration' placeholder='audio_duration' /></div></div>";
+  const errorText = "<dir class='errorText'>Please enter a number</dir>";
 
   var selector = document.getElementById("number_of_audios");
   var value = parseInt(selector.value);
 
-  if (isNaN(value) || value == "") {
+  if (isNaN(value) || null) {
     document.getElementById("audios_table").innerHTML = errorText;
   } else {
     let arr = Array.from(new Array(value), (_, index) => index + 1);

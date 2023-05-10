@@ -379,6 +379,8 @@ let polls = {
 	}
 };
 
+// mediaFPO.png
+
 function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
 	let videoThumbnail = {
 		'media-id': 'video' + num,
@@ -484,6 +486,7 @@ form.addEventListener('submit', function(e) {
    const qNaID = form.elements.poll_id.value;
 
 	// Videos
+
 	const titleOfVideoInputs = document.getElementsByName("video_title");
 	const thumbnailImageInputs = document.getElementsByName("video_thumbnail_image_name");
 	const posterImageInputs = document.getElementsByName("video_poster_image_name");

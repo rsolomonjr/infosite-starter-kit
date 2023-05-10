@@ -72,6 +72,9 @@ function isValidBrandName(input) {
 
   function isImageFile(input) {
     // Check if the input ends with .png, .jpg, or .jpeg
+    if(input === 'stock'){
+      return true
+    }
     const regex = /[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
     return regex.test(input);
   }
