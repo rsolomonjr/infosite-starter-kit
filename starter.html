@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/starter.css">
+	<title>Infosite Starter Tool</title>
+</head>
+<!-- Use this file sits only for server -->
+<body>
+	<div class="flex-container">
+		<div class="infosite_tool_layout">
+			<h1>Infosite Starter Tool</h1>
+			<h4><em>*Basic Kit for Initial Infosite Build</em></h4>
+
+			<form action="?" id="infosite_starter_form" name="infosite_starter_form" method="POST">
+				<div id="infosite_tracking">
+					<div>
+						<label>SF#</label>
+						<input type="text" id="tracking_sfnumber" name="sfnumber" placeholder="SF-Number" />
+					</div>
+					<div>
+						<label>Brand</label>
+						<input type="text" id="tracking_brandName" name="brandName" placeholder="brandName" />
+					</div>
+					<div>
+						<label>Brand ID</label>
+						<input type="text" id="tracking_brandId" name="brandId" placeholder="brandId" />
+					</div>
+					<div>
+						<label>Tactic ID</label>
+						<input type="text" id="tracking_CP_tcid" name="tcid" placeholder="tacticId" />
+					</div>
+					<div>
+						<label>Promo Activity ID</label>
+						<input type="text" id="tracking_CP_activityId" name="activityId" placeholder="activityId" />
+					</div>
+				</div>
+				<h2>Infosite Template</h2>
+
+				<div id="infosite_page_module">
+					<h3>Number of Article Pages</h3>
+					<div id="infosite_number_of_pages">
+						<div>
+							<div><select id="number_of_pages" name="number_of_pages" onchange="changePages()">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+								</select>
+							</div>
+						</div>
+						<div>*one page means only home page</div>
+					</div>
+
+					<h3>Description and Title of Pages</h3>
+					<div id="infosite_page_titles">
+						<div class="infosite_table_header">
+							<div>
+								<div>Title</div>
+								<div>Internal<br>Page?</div>
+								<div>External<br>Link?</div>
+								<div>External URL</div>
+							</div>
+						</div>
+						<div id="page_titles_table">
+							<div id="page1">
+								<div><input type="text" name="description" placeholder="page_title" value="Homepage" required />
+								</div>
+								<div><input type="radio" name="radio1" class="radio" value="internal" checked></div>
+								<div><input type="radio" name="radio1" class="radio" value="external" ></div>
+								<div><input type="url" name="page_url" placeholder="page_url" /></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3>Sponsorship Line</h3>
+				<div id="infosite_sponsorship">
+					<label for="sponsorship">Pharma Co.</label>
+					<div><input type="text" id="sponsorship" name="sponsorship" placeholder="sponsor" /></div>
+				</div>
+				<h3>Polls</h3>
+				<div id="infosite_poll">
+
+					<h3>Number of Polls</h3>
+
+
+					<div class="polls-section">
+						<label for="poll">Poll ID No.</label>
+						<div><input type="text" id="poll_id" name="poll_id" placeholder="questionnaire-id" /></div>
+					</div>
+					<div class="polls-section">
+						<label for="poll">Poll Form No.</label>
+						<div>
+							<div><select id="form_ids" name="form_ids">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3>Video and Audio</h3>
+				<div id="infosite_number_of_media">
+					<div>
+						<label for="number_of_videos">Number of Video Media</label>
+						<div><input type="text" id="number_of_videos" name="number_of_videos"
+								placeholder="number_of_videos" oninput="getNumberOfVideos()" /></div>
+					</div>
+					<div>
+						<label for="number_of_audios">Number of Audio Media</label>
+						<div><input type="text" id="number_of_audios" name="number_of_audios"
+								placeholder="number_of_audios" oninput="getNumberOfAudio()" /></div>
+					</div>
+					<div id="videos_table">
+						<div class='media_table'>
+							<div><input type='text' id='video_title' name='video_title' placeholder='video_title' value='Title and Description' />
+							</div>
+							<div><input type='text' id='video_thumbnail_image_name' name='video_thumbnail_image_name'
+									placeholder='video_thumbnail_image_name'  value='mediaFPO.png' /></div>
+							<div><input type='text' id='video_poster_image_name' name='video_poster_image_name'
+									placeholder='video_poster_image_name'  value='mediaFPO.png' /></div>
+							<div><input type='text' id='video_duration' name='video_duration'
+									placeholder='video_duration' value="00:30" /></div>
+						</div>
+					</div>
+
+					<div id="audios_table">
+						<div class='media_table'>
+							<div><input type='text' id='audio_title' name='audio_title' placeholder='audio_title' value='Title and Description' />
+							</div>
+							<div><input type='text' id='audio_thumbnail_image_name' name='audio_thumbnail_image_name'
+									placeholder='audio_thumbnail_image_name'  value='mediaFPO.png'/></div>
+							<div><input type='text' id='audio_poster_image_name' name='audio_poster_image_name'
+									placeholder='audio_poster_image_name' /></div>
+							<div><input type='text' id='audio_duration' name='audio_duration'
+									placeholder='audio_duration' value="05:48"/></div>
+						</div>
+					</div>
+				</div>
+				<div><button class="infosite_submitButton" type="submit" value="Submit" id="submit"
+						name="submit">Submit</button></div>
+			</form>
+
+		</div>
+		<div class="hlayout">
+			<div class="messages-header">Errors</div>
+			<div class="messages error-block"></div>
+		</div>
+	</div>
+	<div class="jsonOutputBox">
+		<pre id="jsonOutput">
+
+	 	</pre>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+	<script type="text/javascript" src="/js/starter.js"></script>
+	<script type="text/javascript" src="/js/error.js"></script>
+	<script type="text/javascript" src="/js/async.js"></script>
+
+</body>
+
+</html>
