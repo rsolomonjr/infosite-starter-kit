@@ -977,5 +977,29 @@ form.addEventListener('submit', function(e) {
 		json['media-player'].medias = [jsonAllVideoPosters, jsonAllAudioPosters];
 		
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
+
+		const zip = new JSZip();
+  
+		// Add some data to the zip file
+		zip.file("infosite-config.json", JSON.stringify(json, null, "\t"));
+		
+		// Generate the zip file
+		zip
+		  .generateAsync({
+			type: "blob"
+		  })
+		  .then((content) => {
+			// Create a new file object from the zip file content
+			const zipFile = new File([content], "infosite-config.zip", {
+			  type: "application/zip"
+			});
+		
+			// Do something with the zip file, like download it
+			// For example, you could create a link to download the file
+			const downloadLink = document.createElement("a");
+			downloadLink.href = URL.createObjectURL(zipFile);
+			downloadLink.download = "infosite-config.zip";
+			downloadLink.click();
+		  })
 	}
 });

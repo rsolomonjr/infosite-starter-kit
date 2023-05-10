@@ -35,8 +35,8 @@ function isValidBrandName(input) {
 
 
   function isTitleCase(input) {
-    // Check if each word starts with an uppercase letter and the rest are lowercase
-    const regex = /^([A-Z][a-z]*\s)*[A-Z][a-z]*$/;
+    // check if each word begins with a capital letter, a number, or "<"
+    const regex = /^(?:<[a-zA-Z][a-zA-Z0-9<>]*>[a-zA-Z0-9\s]*<\/[a-zA-Z][a-zA-Z0-9<>]*>\s*|\b(?:[A-Z][a-z0-9<>]*|[0-9<>][a-zA-Z0-9<>]*)\s*)+$/;
     return regex.test(input);
   }
 
