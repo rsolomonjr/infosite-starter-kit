@@ -72,7 +72,7 @@ let json = {
 			styles: ''
 		},
 		'sponsored-message': {
-			'html-content': "Developed under the direction and sponsorship of <span class='nobr'>Pharma Co.</span>",
+			'html-content': "Developed under the direction and sponsorship of <span class='nobr'>Pharma Co</span>.",
 			className: '',
 			styles: ''
 		}
