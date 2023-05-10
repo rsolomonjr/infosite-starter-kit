@@ -773,6 +773,7 @@ form.addEventListener('submit', function(e) {
 
 	if (errors.length > 0) {
 		errorBlock.innerHTML = errors.map((error) => `<p class="errors">${error}</p>`).join('');
+		document.getElementById('jsonOutput').innerHTML = '';
 		window.scrollTo(0, 0);
 	} else {
 		// App JSON Object
