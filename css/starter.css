@@ -185,20 +185,29 @@ div[id*="radio"] {
   margin-top: 1em;
 }
 
-
-  .messages .success{
-    border:1px sold green;
-    background-color:#dff0d8;
-    color: #3c763d;
-    border-color:#d6e9c6;
+  .messages-header {
+    background-color:#f2dede;
+    max-height: 515px;
+    width: 300px;
+    color: #000;
+    border: thin solid var(--tool-blue);
     font-size:13px;
-    padding:5px;
-    word-wrap:break-word;
+    margin-left: 15px;
+    text-align: center;
+    padding: 2px 5px 2px 5px;
+    margin-bottom: 5px !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
+
+
+
   .messages .errors{
     background-color:#f2dede;
     color: #a94442;
     border-color:#ebccd1;
+    border-radius: 5px;
     font-size:13px;
     padding:5px;
     word-wrap:break-word;
@@ -207,8 +216,8 @@ div[id*="radio"] {
   
   .error-block {
     width: 300px;
-    max-height: 515px;
-    border: 1px solid rgb(221, 221, 221);
+    border: thin solid var(--tool-blue);
+    border-radius: 5px;
     margin-left: 15px;
     text-align: center;
     padding: 2px 5px 2px 5px;
