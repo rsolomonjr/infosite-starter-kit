@@ -18,5 +18,9 @@ Includes:
 - While Loop
 - If ... Else
 
+# Demo
+
+You can find a live, in-development version online at:
+https://infosite_starter_kit.playcode.io/
 
 
