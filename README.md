@@ -18,7 +18,6 @@ Includes:
 - While Loop
 - If ... Else
 
-# Demo
 
 
 
