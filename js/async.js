@@ -949,7 +949,7 @@ form.addEventListener('submit', function(e) {
 
 		if(numVideos === 0 && numAudios === 0){
 			
-			playlist["playlist-items"].splice(0, playlist["playlist-items"].length);
+			playlists.splice(0, playlists.length);
 			json['media-player'].medias.splice(0, json['media-player'].medias);
 
 		} else if (numVideos === 0 && numAudios > 0){
