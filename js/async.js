@@ -254,43 +254,8 @@ let json = {
 	},
 	comments: [],
 	'media-slides': [],
-	accordion: [
-		{
-			'config-id': 'accordion-1',
-			index: 1,
-			header: {
-				image: {
-					enable: true,
-					src: '{{imageServer.host}}/pi/sites/infosite/IS-template-22.10.5/images/template/accordionArrow.png'
-				},
-				'html-content': '<h3>Accordion Example</h3>',
-				buttons: {
-					expand: '',
-					collapse: ''
-				}
-			}
-		}
-	],
+	accordion: [],
 	modal: []
-};
-
-//
-let jsonTracking = {
-	tracking: {
-		'RTS-timer': 5,
-		'SF-Number': '123456.25',
-		brandName: 'Medscape',
-		brandId: '3001',
-		productName: 'infosite',
-		productId: '19',
-		partnerCreativeId: '',
-		CP: {
-			appName: 'infosite',
-			activityId: '82043',
-			activityName: 'infosite',
-			tacticId: '69420'
-		}
-	}
 };
 
 function pageObjUpdate(num, value) {
@@ -878,60 +843,60 @@ form.addEventListener('submit', function(e) {
 
 		// Videos
 
-		let jsonAllVideoThumbs = [];
-		let jsonAllVideoPosters = [];
+	
+			let jsonAllVideoThumbs = [];
+			let jsonAllVideoPosters = [];
+
+			let numberVideoThumbs = 1; 
+			function allVideoThumbnails(){
+			for (let i = 0; i < videoThumbnails.length; i++){
+			let videoThumbnail = videoThumbnails[i];
+			let videoTitle = videoThumbnail[0];
+			let thumb = videoThumbnail[1]; 
 
 
-		let numberVideoThumbs = 1; 
-		function allVideoThumbnails(){
-		for (let i = 0; i < videoThumbnails.length; i++){
-		let videoThumbnail = videoThumbnails[i];
-		let videoTitle = videoThumbnail[0];
-		let thumb = videoThumbnail[1]; 
+			let videoThumbs = videoThumbnailUpdate(
+			numberVideoThumbs, 
+			sfnumber, 
+			videoTitle, 
+			thumb
+			);
+			jsonAllVideoThumbs.push(videoThumbs);  
+			numberVideoThumbs++;
+			}
+			return jsonAllVideoThumbs;
+			}
 
+			let numberVideoPosters = 1; 
+			function allVideoPosters(){
+			for (let i = 0; i < videoPosters.length; i++){
+			let videoPoster = videoPosters[i];
+			let videoPosterTitle = videoPoster[0];
+			let poster = videoPoster[1]; 
+			let videoDuration = videoPoster[2]; 
 
-		let videoThumbs = videoThumbnailUpdate(
-		numberVideoThumbs, 
-		sfnumber, 
-		videoTitle, 
-		thumb
-		);
-		jsonAllVideoThumbs.push(videoThumbs);  
-		numberVideoThumbs++;
-		}
-		return jsonAllVideoThumbs;
-		}
+			let videoMediaPosters = videoPosterUpdate(
+			numberVideoPosters, 
+			sfnumber, 
+			videoPosterTitle, 
+			poster, 
+			videoDuration
+			);
+			jsonAllVideoPosters.push(videoMediaPosters);  
+			numberVideoPosters++;
+			}
+			return jsonAllVideoPosters;
+			}
 
-		let numberVideoPosters = 1; 
-		function allVideoPosters(){
-		for (let i = 0; i < videoPosters.length; i++){
-		let videoPoster = videoPosters[i];
-		let videoPosterTitle = videoPoster[0];
-		let poster = videoPoster[1]; 
-		let videoDuration = videoPoster[2]; 
-
-		let videoMediaPosters = videoPosterUpdate(
-		numberVideoPosters, 
-		sfnumber, 
-		videoPosterTitle, 
-		poster, 
-		videoDuration
-		);
-		jsonAllVideoPosters.push(videoMediaPosters);  
-		numberVideoPosters++;
-		}
-		return jsonAllVideoPosters;
-		}
-
-		allVideoThumbnails();
-		allVideoPosters();
-
-		let playlists = json["media-player"]["playlists"];
-		let playlist = playlists.find(p => p["config-id"] === "playlist-1");
+			allVideoThumbnails();
+			allVideoPosters();
+		
+		
+		
 
 		let jsonAllAudioThumbs = [];
 		let jsonAllAudioPosters = [];
-	 
+		
 		let numberaudioThumbs = 1; 
 		function allAudioThumbnails(){
 		  for (let i = 0; i < allaudioThumbnails.length; i++){
@@ -975,9 +940,35 @@ form.addEventListener('submit', function(e) {
 	 
 		allAudioThumbnails();
 		allAudioPosters();
-	 
-		playlist["playlist-items"].push(jsonAllVideoThumbs, jsonAllAudioThumbs);
-		json['media-player'].medias = [jsonAllVideoPosters, jsonAllAudioPosters];
+
+		let playlists = json["media-player"]["playlists"];
+		let playlist = playlists.find(p => p["config-id"] === "playlist-1");
+
+		let numVideos = parseInt(document.getElementById('number_of_videos').value);
+		let numAudios = parseInt(document.getElementById('number_of_audios').value);
+
+		if(numVideos === 0 && numAudios === 0){
+			
+			playlist["playlist-items"].splice(0, playlist["playlist-items"].length);
+			json['media-player'].medias.splice(0, json['media-player'].medias);
+
+		} else if (numVideos === 0 && numAudios > 0){
+
+			playlist["playlist-items"] = jsonAllAudioThumbs;
+			json['media-player'].medias = jsonAllAudioPosters;
+
+			} else if (numVideos > 0 && numAudios === 0){
+				
+				
+				playlist["playlist-items"] = jsonAllVideoThumbs;
+				json['media-player'].medias = jsonAllVideoPosters;
+
+			} else {
+				
+				playlist["playlist-items"].push(jsonAllVideoThumbs, jsonAllAudioThumbs);
+				json['media-player'].medias = [jsonAllVideoThumbs, jsonAllAudioPosters];
+
+		}
 		
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
 
