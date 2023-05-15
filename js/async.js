@@ -200,18 +200,7 @@ let json = {
 	formulary: {
 		path: ''
 	},
-	'gift-manager': {
-		'promo-activity-id': '',
-		'package-id': '',
-		form: {
-			emailHide: false,
-			officeRoadHide: false,
-			officeCityHide: false,
-			stateHide: false,
-			zipHide: false,
-			countryHide: false
-		}
-	},
+	'gift-manager': {},
 	'zoom-images': [],
 	'uld-banner': {
 		enable: false,
@@ -236,22 +225,9 @@ let json = {
 	resources: [],
 	'additional-resources': [],
 	'share-widgets': [],
-	'twitter-timeline': {
-		'account-name': '',
-		'tweet-limit': 3,
-		chrome: {
-			noheader: true,
-			nofooter: true,
-			noborders: false,
-			noscrollbar: false,
-			transparent: true
-		}
-	},
+	'twitter-timeline': {},
 	'consult-widget': [],
-	'consult-ad': {
-		title: '',
-		items: []
-	},
+	'consult-ad': {},
 	comments: [],
 	'media-slides': [],
 	accordion: [],
