@@ -501,7 +501,7 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-
+	
 	// Loop through all the "description" inputs and push their values to the array
 	for (let i = 0; i < descriptionInputs.length; i++) {
 		const descriptionValue = descriptionInputs[i].value;
@@ -513,6 +513,8 @@ form.addEventListener('submit', function(e) {
 			break;
 		}
 	}
+
+	
 
 	// Loop through all the radio inputs and push their values to the array
 	for (let i = 0; i < radioInputs.length; i++) {
@@ -527,12 +529,9 @@ form.addEventListener('submit', function(e) {
 	}
 
 
-
-	
-
-	// // Loop through all the "page_url" inputs and add their values to the array
+	// Loop through all the "page_url" inputs and add their values to the array
 		
-		for (let i = 1; i < urlInputs.length; i++) {
+		for (let i = 0; i < urlInputs.length; i++) {
 			const urlValue = urlInputs[i].value;
 			
 			try {
@@ -556,12 +555,16 @@ form.addEventListener('submit', function(e) {
 				return str !== null && str !== undefined && str.trim() !== '';
 			 }
 
+	
+
 		// Check if URL is empty or null
 		for (let i = 0; i < Object.keys(values).length; i++) {
 				let urlCheck = values[i];
 				let radioChecked = urlCheck[1];
 				let urlEntered = urlCheck[2];
-				if(radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
+				if(values[0][1] === 'external') {
+					errors.push("Homepage can not be external")
+				} else if(radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
 					errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
 				}	
 					

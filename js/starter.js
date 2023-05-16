@@ -1,7 +1,18 @@
+ $(document).ready(function() {
+      $('input[type="radio"]').click(function() {
+        // Uncheck all radio buttons
+        $('input[type="radio"]').prop('checked', false);
+
+        // Check the clicked radio button
+        $(this).prop('checked', true);
+      });
+    });
+
 function changePages() {
   let selector = document.getElementsByName("number_of_pages")[0];
   let numberSelected = selector[selector.selectedIndex].value;
 
+ 
   let number = 1;
   let descriptionTitle = "";
 

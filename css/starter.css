@@ -37,8 +37,13 @@ form {
   margin: 0 auto;
 }
 
+input[type="radio"]{
+  -webkit-appearance: radio;
+}
+
 div[id^="infosite_"],
 input[type="text"],
+input[type="url"],
 select {
   border: thin solid var(--tool-blue);
   border-radius: 5px;
