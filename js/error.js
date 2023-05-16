@@ -2,7 +2,7 @@
 
 function testSFNumber(input) {
     if(input != null || input != '') {
-    const regex = /[0-9]{6}\.\d+[a-z]/;
+    const regex = /^\d{6}\.\d{0,3}[a-z]?$/;
     return regex.test(input);
     } else {
       return false
