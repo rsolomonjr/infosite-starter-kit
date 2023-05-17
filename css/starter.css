@@ -191,7 +191,7 @@ div[id*="radio"] {
 }
 
   .messages-header {
-    background-color:#f2dede;
+    background-color:#E48E66;
     max-height: 515px;
     width: 300px;
     color: #000;
@@ -209,7 +209,7 @@ div[id*="radio"] {
 
 
   .messages .errors{
-    background-color:#f2dede;
+    background-color:#E48E66;
     color: #a94442;
     border-color:#ebccd1;
     border-radius: 5px;
