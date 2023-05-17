@@ -47,7 +47,7 @@ input[type="url"],
 select {
   border: thin solid var(--tool-blue);
   border-radius: 5px;
-  box-shadow: 1px 1px steelblue;
+  box-shadow: rgba(70, 130, 180, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
 }
 
 button[type="submit"] {
@@ -190,12 +190,18 @@ div[id*="radio"] {
   margin-top: 1em;
 }
 
+  .messages-header, 
+  .error-block {
+    display: none;
+  }
+
   .messages-header {
     background-color:#E48E66;
     max-height: 515px;
     width: 300px;
-    color: #000;
-    border: thin solid var(--tool-blue);
+    color: #320000;
+    border: thin solid #650F00;
+    border-radius: 3px;
     font-size:13px;
     margin-left: 15px;
     text-align: center;
@@ -203,15 +209,13 @@ div[id*="radio"] {
     margin-bottom: 5px !important;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;   
   }
-
-
 
   .messages .errors{
     background-color:rgba(228, 143, 103, 0.75);
-    color: #a94442;
-    border-color:#E48E66;
+    color: #650F00;
+    border-color:#650F00;
     border-radius: 5px;
     font-size:13px;
     padding:5px;
@@ -221,10 +225,11 @@ div[id*="radio"] {
   
   .error-block {
     width: 300px;
-    border: thin solid var(--tool-blue);
+    border: thin solid #650F00;
+    border-radius: 5px;
     margin-left: 15px;
     text-align: center;
-    padding: 2px 5px 2px 5px;
+    padding: 2px 5px 2px 5px;    
   }
 
   p.errors {

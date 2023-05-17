@@ -442,7 +442,7 @@ form.addEventListener('submit', function(e) {
 
 	//Error HTML Block
 	const errorBlock = document.querySelector('.error-block');
-
+	const messageHeader = document.querySelector('.messages-header');
 
 	e.preventDefault(); // Prevent the default form submission behavior
 
@@ -719,11 +719,19 @@ form.addEventListener('submit', function(e) {
 	 }
 
 	if (errors.length > 0) {
+		
+		messageHeader.style.display = "block";
+		errorBlock.style.display = "block"; 
+
 		errorBlock.innerHTML = errors.map((error) => `<p class="errors">${error}</p>`).join('');
 		document.getElementById('jsonOutput').innerHTML = '';
 		window.scrollTo(0, 0);
 	} else {
 		// App JSON Object
+
+		messageHeader.style.display = "none";
+		errorBlock.style.display = "none"; 
+
 		errors = [];
 		errorBlock.innerHTML = errors;
 
