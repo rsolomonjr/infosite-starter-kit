@@ -1,11 +1,11 @@
 // ERROR CHECKING
 
 function testSFNumber(input) {
-    if(input != null || input != '') {
+    if(input !== null || input !== '') {
     const regex = /^\d{6}\.\d{0,3}[a-z]?$/;
     return regex.test(input);
     } else {
-      return false
+      return false;
     }
 }
 
@@ -73,7 +73,7 @@ function isValidBrandName(input) {
   function isImageFile(input) {
     // Check if the input ends with .png, .jpg, or .jpeg
     if(input === 'stock'){
-      return true
+      return true;
     }
     const regex = /[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
     return regex.test(input);
