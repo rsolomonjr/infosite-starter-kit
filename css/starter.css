@@ -211,7 +211,7 @@ div[id*="radio"] {
   .messages .errors{
     background-color:rgba(228, 143, 103, 0.75);
     color: #a94442;
-    border-color:#ebccd1;
+    border-color:#E48E66;
     border-radius: 5px;
     font-size:13px;
     padding:5px;
