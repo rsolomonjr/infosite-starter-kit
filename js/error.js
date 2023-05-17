@@ -48,7 +48,7 @@ function isValidBrandName(input) {
 
   function isValidPharma(input) {
     // Check if the input contains only letters
-    const regex = /^[a-zA-Z]+$/;
+    const regex = /^[A-Z]+$/;
     return regex.test(input);
   }
 
