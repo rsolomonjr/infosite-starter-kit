@@ -1,12 +1,8 @@
 // ERROR CHECKING
 
 function testSFNumber(input) {
-    if(input !== null || input !== '') {
     const regex = /^\d{6}\.\d{0,3}[a-z]?$/;
     return regex.test(input);
-    } else {
-      return false;
-    }
 }
 
 function isValidBrandName(input) {
