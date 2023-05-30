@@ -18,7 +18,7 @@ Includes:
 - While Loop
 - If ... Else
 
-DEMO: https://rsolomonjr.dev/starter.html
+DEMO: https://rsolomonjr.dev/starter.html <br>
 DEMO: https://infosite_starter.playcode.io/ {click Skip Intro} 
 
 
