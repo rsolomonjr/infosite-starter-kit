@@ -6,7 +6,7 @@ function testSFNumber(input) {
 }
 
 function isValidBrandName(input) {
-    // Check if the input is alphanumeric and starts with a capital letter
+    // Check if the input is ampersands (&), brackets ([ and ]), and letters
     const regex = /^[\d\w\[\]]+[^\?\\\/\:"<>\|]*$/g;
     return regex.test(input);
   }
@@ -32,7 +32,7 @@ function isValidBrandName(input) {
 
   function isTitleCase(input) {
     // check if each word begins with a capital letter, a number, or "<"
-    const regex = /^(?:<[a-zA-Z][a-zA-Z0-9<>]*>[a-zA-Z0-9\s]*<\/[a-zA-Z][a-zA-Z0-9<>]*>\s*|\b(?:[A-Z][a-z0-9<>]*|[0-9<>][a-zA-Z0-9<>]*)\s*)+$/;
+    const regex = /^[A-Z][a-zA-Z0-9\s\S]*$/;
     return regex.test(input);
   }
 
@@ -44,7 +44,7 @@ function isValidBrandName(input) {
 
   function isValidPharma(input) {
     // Check if the input contains only letters
-    const regex = /^[A-Z]+$/;
+    const regex = /^[\d\w\[\]]+[^\?\\\/\:"<>\|]*$/g;
     return regex.test(input);
   }
 
@@ -56,7 +56,7 @@ function isValidBrandName(input) {
 
   function isValidTitle(input) {
     // Check if the input is alphanumeric and starts with a capital letter
-    const regex = /^[A-Z][A-Za-z\s&]*$/;
+    const regex = /^[A-Z][a-zA-Z0-9\s\S]*$/;
     return regex.test(input);
   }
 
