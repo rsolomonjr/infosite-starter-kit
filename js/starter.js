@@ -1,27 +1,20 @@
-$('input[type="radio"]').click(function(){
-  var $radio = $(this);
-  
-  // if this was previously checked
-  if ($radio.data('waschecked') == true)
-  {
-      $radio.prop('checked', false);
-      $radio.data('waschecked', false);
-  }
-  else
-      $radio.data('waschecked', true);
-  
-  // remove was checked from other radios
-  $radio.siblings('input[name="radio"]').data('waschecked', false);
+ $(document).ready(function() {
+      $('input[type="radio"]').click(function() {
+        // Uncheck all radio buttons
+        $('input[type="radio"]').prop('checked', false);
 
-});
+        // Check the clicked radio button
+        $(this).prop('checked', true);
+      });
+    });
 
-function changePages(){
+function changePages() {
   let selector = document.getElementsByName("number_of_pages")[0];
   let numberSelected = selector[selector.selectedIndex].value;
 
  
   let number = 1;
-  let descriptionTitle = "Homepage";
+  let descriptionTitle = "";
 
   while (number <= numberSelected) {
     descriptionTitle +=
@@ -29,7 +22,7 @@ function changePages(){
       number.toString() +
       '"><div><input type="radio" name="radio' +
       number.toString() +
-      '" class="radio" value="internal" checked></div><div><input type="radio"  name="radio' +
+      '" class="radio" value="internal"></div><div><input type="radio"  name="radio' +
       number.toString() +
       '" class="radio" value="external"></div></div><div><input type="url" id="page_url" name="page_url" placeholder="page_url" /></div></div>';
     number++;

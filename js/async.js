@@ -755,7 +755,7 @@ form.addEventListener("submit", function(e){
 
     // Loop through all the "description" inputs and push their values to the array
     for (let i = 0; i < descriptionInputs.length; i++) {
-		const descriptionValue = descriptionInputs[i].value;
+		const descriptionValue = descriptionInputs[i].value.trim();
 		try {
 			checkTitles(descriptionValue);
 			values.push([ descriptionValue ]);
@@ -783,7 +783,7 @@ form.addEventListener("submit", function(e){
     // Loop through all the "page_url" inputs and add their values to the array
 
     for (let i = 0; i < urlInputs.length; i++) {
-        const urlValue = urlInputs[i].value;
+        const urlValue = urlInputs[i].value.trim();
         
         try {
                 checkUrl(urlValue);
@@ -815,8 +815,6 @@ form.addEventListener("submit", function(e){
             let urlEntered = urlCheck[2];
             if(values[0][1] === 'external') {
                 errors.push("Homepage can not be external")
-            } else if(!values[0][1] && radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
-                errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
             } 
     }
 
@@ -824,9 +822,9 @@ form.addEventListener("submit", function(e){
         let buttonCheck = values[i];
         let buttonChecked = buttonCheck[1];
         let urlisEntered = buttonCheck[2];
-        if(buttonChecked === 'external' && isStringWithValue(urlisEntered)){
-            errors.push('For external URL use<br>Please select the second of the two buttons.');
-        }					
+       if(buttonChecked === 'external' && isStringNullOrEmpty(urlisEntered)){
+			errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
+		} 					
     }
 
 
@@ -864,7 +862,7 @@ form.addEventListener("submit", function(e){
     const videoPosters = [];
 
     for (let i = 0; i < titleOfVideoInputs.length; i++) {
-		const titleOfVideoValue = titleOfVideoInputs[i].value;
+		const titleOfVideoValue = titleOfVideoInputs[i].value.trim();
 		try {
 			checkTitle(titleOfVideoValue);
 			videoThumbnails.push([titleOfVideoValue]);
@@ -920,7 +918,7 @@ form.addEventListener("submit", function(e){
     const allaudioPosters = [];
 
     for (let i = 0; i < titleOfAudioInputs.length; i++) {
-       const titleOfAudioValue = titleOfAudioInputs[i].value;
+       const titleOfAudioValue = titleOfAudioInputs[i].value.trim();
        try {
            checkTitle(titleOfAudioValue);
            allaudioThumbnails.push([titleOfAudioValue]);
@@ -1020,8 +1018,10 @@ form.addEventListener("submit", function(e){
 
 		jsonPages();
 
-		json.pages = jsonArticleAllPages;
+		jsonArticleAllPages = jsonArticleAllPages.filter(page => page['meta-data'].title !== null);
+		json.pages = jsonArticleAllPages;		
 		json.navigation = { links: jsonAllPages };
+		json.navigation.links = json.navigation.links.filter(link => link.label !== null);
 
 		let questionnaire = []; 
 
