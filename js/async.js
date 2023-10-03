@@ -557,8 +557,6 @@ let polls = {
 	}
 };
 
-// mediaFPO.png
-
 function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
 	let videoThumbnail = {
 		'media-id': 'video' + num,
@@ -637,93 +635,103 @@ function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, 
 
 const form = document.getElementById('infosite_starter_form');
 
-form.addEventListener('submit', function(e) {
-	
-	/* Declarations */
+form.addEventListener("submit", function(e){
+    /* Declarations */
 
-	const sfnumber = document.getElementById('tracking_sfnumber').value;
-	const brandName = document.getElementById('tracking_brandName').value;
-	const brandId = document.getElementById('tracking_brandId').value;
-	const tcid = document.getElementById('tracking_CP_tcid').value;
-	const activityId = document.getElementById('tracking_CP_activityId').value;
+    const sfnumber = document.getElementById('tracking_sfnumber').value;
+    let brandName = document.getElementById('tracking_brandName').value;
+    const brandId = document.getElementById('tracking_brandId').value;
+    const tcid = document.getElementById('tracking_CP_tcid').value;
+    const activityId = document.getElementById('tracking_CP_activityId').value;
 
-	// Get all input elements with the name "description"
-	const descriptionInputs = document.getElementsByName('description');
-	// Get all input elements with the name "internal" or "external"
-	const radioInputs = document.querySelectorAll("input[type='radio']:checked");
-	// Get all input elements with the name "page_url"
-	const urlInputs = document.getElementsByName('page_url');
-
-
-	//Sponsor Text
-	let sponsorText = document.getElementById('sponsorship').value;
-
-	//Polls
-	const pollNoCheckbox = document.getElementById("poll-no");
-		
-		if (pollNoCheckbox !== null && !pollNoCheckbox.checked){
-			var numberOfPolls = parseFloat(form.elements.form_ids.value);
-		} else{
-			json.polls = []
-		}
-		const qNaID = form.elements.poll_id.value;
-   
-
-	// Videos
-
-	const titleOfVideoInputs = document.getElementsByName("video_title");
-	const thumbnailImageInputs = document.getElementsByName("video_thumbnail_image_name");
-	const posterImageInputs = document.getElementsByName("video_poster_image_name");
-	const videoDurationInputs = document.getElementsByName("video_duration");
-
-	// Audio/Podcast
-	const titleOfAudioInputs = document.getElementsByName("audio_title");
-	const audioThumbnailImageInputs = document.getElementsByName("audio_thumbnail_image_name");
-	const audioPosterImageInputs = document.getElementsByName("audio_poster_image_name");
-	const audioDurationInputs = document.getElementsByName("audio_duration");
+    // Get all input elements with the name "description"
+    const descriptionInputs = document.getElementsByName('description');
+    // Get all input elements with the name "internal" or "external"
+    const radioInputs = document.querySelectorAll("input[type='radio']:checked");
+    // Get all input elements with the name "page_url"
+    const urlInputs = document.getElementsByName('page_url');
 
 
-	//Error HTML Block
-	const errorBlock = document.querySelector('.error-block');
-	const messageHeader = document.querySelector('.messages-header');
+    //Sponsor Text
+    let sponsorText = document.getElementById('sponsorship').value;
 
-	e.preventDefault(); // Prevent the default form submission behavior
+    //Polls
+    const pollNoCheckbox = document.getElementById("poll-no");
 
-	let errors = [];
+    if (pollNoCheckbox !== null && !pollNoCheckbox.checked){
+        var numberOfPolls = parseFloat(form.elements.form_ids.value);
+    } else{
+        json.polls = []
+    }
+    const qNaID = form.elements.poll_id.value;
 
-	if (!testSFNumber(sfnumber)) {
+
+    // Videos
+
+    const titleOfVideoInputs = document.getElementsByName("video_title");
+    const thumbnailImageInputs = document.getElementsByName("video_thumbnail_image_name");
+    const posterImageInputs = document.getElementsByName("video_poster_image_name");
+    const videoDurationInputs = document.getElementsByName("video_duration");
+
+    // Audio/Podcast
+    const titleOfAudioInputs = document.getElementsByName("audio_title");
+    const audioThumbnailImageInputs = document.getElementsByName("audio_thumbnail_image_name");
+    const audioPosterImageInputs = document.getElementsByName("audio_poster_image_name");
+    const audioDurationInputs = document.getElementsByName("audio_duration");
+
+
+    //Accordions
+    const accordionNoCheckbox = document.getElementById("accordion-no");
+
+    if (accordionNoCheckbox !== null && !accordionNoCheckbox.checked){
+		var numberOfAccordions = parseInt(form.elements.accordion_ids.value);
+	} else{
+		json.accordion = []
+	}
+
+
+
+    //Error HTML Block
+    const errorBlock = document.querySelector('.error-block');
+    const messageHeader = document.querySelector('.messages-header');
+
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    let errors = [];
+
+    if (!testSFNumber(sfnumber)) {
 		errors.push('Invalid SF-Number<br>Number format: xxxxxx.xx');
 	}
 
-	if (!isValidBrandName(brandName)) {
+    if (!isValidBrandName(brandName)) {
 		errors.push('Invalid Brand Name<br>Alphanumeric<br>and must begin<br>with a capital letter.');
 	}
 
-	if (!isValidDepartmentID(brandId)) {
+    if (!isValidDepartmentID(brandId)) {
 		errors.push('Invalid Department ID<br>4 digits only.');
 	}
 
-	if (!isValidTacticID(tcid)) {
+    if (!isValidTacticID(tcid)) {
 		errors.push('Invalid Tactic ID<br>5 to 6 numbers only.');
 	}
 
-	if (!isValidPromoID(activityId)) {
+    if (!isValidPromoID(activityId)) {
 		errors.push('Invalid Promo Activity ID<br>5 to 6 numbers only.');
 	}
 
-	if (!isValidPharma(sponsorText)) {
+    if (!isValidPharma(sponsorText)) {
 		errors.push('Invalid Sponsorship text<br>Letters only.');
 	}
 
-	if (!isValidPollID(qNaID)) {
+    if (!isValidPollID(qNaID)) {
 		errors.push('Invalid Poll ID<br>Numbers only<br>Max 5.');
 	}
 
-	
-	// Define a multidimensional array to store the values
-	const values = [];
 
-	function checkTitles(titleDescription) {
+    // Define a multidimensional array to store the values
+    const values = [];
+
+    function checkTitles(titleDescription) {
 
 			if (!isTitleCase(titleDescription)) {
 				errors.push('Please enter a title<br>that is Title Case.');
@@ -734,7 +742,7 @@ form.addEventListener('submit', function(e) {
 		
 	}
 
-	function checkUrl(externalURL) {
+    function checkUrl(externalURL) {
 
 		if(!isValidURL(externalURL)){
 			errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
@@ -744,9 +752,9 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-	
-	// Loop through all the "description" inputs and push their values to the array
-	for (let i = 0; i < descriptionInputs.length; i++) {
+
+    // Loop through all the "description" inputs and push their values to the array
+    for (let i = 0; i < descriptionInputs.length; i++) {
 		const descriptionValue = descriptionInputs[i].value;
 		try {
 			checkTitles(descriptionValue);
@@ -757,10 +765,10 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-	
 
-	// Loop through all the radio inputs and push their values to the array
-	for (let i = 0; i < radioInputs.length; i++) {
+
+    // Loop through all the radio inputs and push their values to the array
+    for (let i = 0; i < radioInputs.length; i++) {
 		const radioValue = radioInputs[i].value;
 		// Check if the array already contains an element for the current "description" input
 		const index = i % (descriptionInputs.length * 2);
@@ -772,60 +780,59 @@ form.addEventListener('submit', function(e) {
 	}
 
 
-	// Loop through all the "page_url" inputs and add their values to the array
-		
-		for (let i = 0; i < urlInputs.length; i++) {
-			const urlValue = urlInputs[i].value;
-			
-			try {
-					checkUrl(urlValue);
-					const index = i % (descriptionInputs.length * 2);
-					if (values[index]) {
-						values[index].push(urlValue);
-					} else {
-						values.push([ null, null, urlValue ]);
-					}
-				} catch (error) {
-					break;
-				}
-			}
+    // Loop through all the "page_url" inputs and add their values to the array
 
-			function isStringNullOrEmpty(str) {
-				return str === null || str.trim() === '';
-			 }
-			 
-			 function isStringWithValue(str) {
-				return str !== null && str !== undefined && str.trim() !== '';
-			 }
+    for (let i = 0; i < urlInputs.length; i++) {
+        const urlValue = urlInputs[i].value;
+        
+        try {
+                checkUrl(urlValue);
+                const index = i % (descriptionInputs.length * 2);
+                if (values[index]) {
+                    values[index].push(urlValue);
+                } else {
+                    values.push([ null, null, urlValue ]);
+                }
+            } catch (error) {
+                break;
+            }
+        }
 
-	
+    function isStringNullOrEmpty(str) {
+        return str === null || str.trim() === '';
+     }
 
-		// Check if URL is empty or null
-		for (let i = 0; i < Object.keys(values).length; i++) {
-				let urlCheck = values[i];
-				let radioChecked = urlCheck[1];
-				let urlEntered = urlCheck[2];
-				if(values[0][1] === 'external') {
-					errors.push("Homepage can not be external")
-				} else if(radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
-					errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
-				}	
-					
-		}
+    function isStringWithValue(str) {
+       return str !== null && str !== undefined && str.trim() !== '';
+    }
 
-		for (let i = 0; i < Object.keys(values).length; i++) {
-			let buttonCheck = values[i];
-			let buttonChecked = buttonCheck[1];
-			let urlisEntered = buttonCheck[2];
-			if(buttonChecked === 'internal' && isStringWithValue(urlisEntered)){
-				errors.push('For external URL use<br>Please select the second of the two buttons.');
-			}					
-		}
-	
 
-	// Playlist Video and Audio Section //
 
-	function checkTitle(playlistTitle) {
+    // Check if URL is empty or null
+    for (let i = 0; i < Object.keys(values).length; i++) {
+            let urlCheck = values[i];
+            let radioChecked = urlCheck[1];
+            let urlEntered = urlCheck[2];
+            if(values[0][1] === 'external') {
+                errors.push("Homepage can not be external")
+            } else if(!values[0][1] && radioChecked === 'external' && isStringNullOrEmpty(urlEntered)){
+                errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
+            } 
+    }
+
+    for (let i = 0; i < Object.keys(values).length; i++) {
+        let buttonCheck = values[i];
+        let buttonChecked = buttonCheck[1];
+        let urlisEntered = buttonCheck[2];
+        if(buttonChecked === 'external' && isStringWithValue(urlisEntered)){
+            errors.push('For external URL use<br>Please select the second of the two buttons.');
+        }					
+    }
+
+
+    // Playlist Video and Audio Section //
+
+    function checkTitle(playlistTitle) {
 		if(!isValidTitle(playlistTitle)){
 			errors.push('Invalid title<br>Must begin<br>with a capital letter.');
 			return errors;
@@ -833,8 +840,8 @@ form.addEventListener('submit', function(e) {
 			return true;
 		}
 	}
-	
-	function checkImage(imageFile) {
+
+    function checkImage(imageFile) {
 		if(!isImageFile(imageFile)){
 			errors.push('Invalid image format<br>Must end with .png, .jpg, or .jpeg.');
 			return errors;
@@ -843,7 +850,7 @@ form.addEventListener('submit', function(e) {
 		}
 	}
 
-	function checkMedia(mediaLength) {
+    function checkMedia(mediaLength) {
 		if(!isValidMediaLength(mediaLength)){
 			errors.push('Invalid media time<br>Format 00:00.');
 			return errors;
@@ -853,10 +860,10 @@ form.addEventListener('submit', function(e) {
 	}
 
 
-	const videoThumbnails = [];
-	const videoPosters = []; 
+    const videoThumbnails = [];
+    const videoPosters = [];
 
-	for (let i = 0; i < titleOfVideoInputs.length; i++) {
+    for (let i = 0; i < titleOfVideoInputs.length; i++) {
 		const titleOfVideoValue = titleOfVideoInputs[i].value;
 		try {
 			checkTitle(titleOfVideoValue);
@@ -866,102 +873,102 @@ form.addEventListener('submit', function(e) {
 			break;
 		}
 	 }
-	 
-	 for (let i = 0; i < thumbnailImageInputs.length; i++) {
-		const thumbnailValue = thumbnailImageInputs[i].value;
-		try {
-			checkImage(thumbnailValue);
 
-			const index = i % thumbnailImageInputs.length;
-			videoThumbnails[index].push(thumbnailValue);
-		} catch (error){
-			break;
-		}
+    for (let i = 0; i < thumbnailImageInputs.length; i++) {
+       const thumbnailValue = thumbnailImageInputs[i].value;
+       try {
+           checkImage(thumbnailValue);
 
-	 }
-  
-	 for (let i = 0; i < posterImageInputs.length; i++) {
-		const posterValue = posterImageInputs[i].value;
+           const index = i % thumbnailImageInputs.length;
+           videoThumbnails[index].push(thumbnailValue);
+       } catch (error){
+           break;
+       }
 
-		try {
-			checkImage(posterValue);
-			
-			const index = i % posterImageInputs.length;
-			videoPosters[index].push(posterValue);
-		} catch (error){
-			break;
-		}
-		
-	 }
-  
-	 for (let i = 0; i < videoDurationInputs.length; i++) {
-		const durationValue = videoDurationInputs[i].value;
+    }
 
-		try {
-			checkMedia(durationValue);
-			
-			const index = i % videoDurationInputs.length;
-			videoPosters[index].push(durationValue);
-		} catch (error){
-			break;
-		}
+    for (let i = 0; i < posterImageInputs.length; i++) {
+       const posterValue = posterImageInputs[i].value;
 
-	 }
+       try {
+           checkImage(posterValue);
+           
+           const index = i % posterImageInputs.length;
+           videoPosters[index].push(posterValue);
+       } catch (error){
+           break;
+       }
+       
+    }
+
+    for (let i = 0; i < videoDurationInputs.length; i++) {
+       const durationValue = videoDurationInputs[i].value;
+
+       try {
+           checkMedia(durationValue);
+           
+           const index = i % videoDurationInputs.length;
+           videoPosters[index].push(durationValue);
+       } catch (error){
+           break;
+       }
+
+    }
 
 
-	 const allaudioThumbnails = [];
-	 const allaudioPosters = []; 
+    const allaudioThumbnails = [];
+    const allaudioPosters = [];
 
-	 for (let i = 0; i < titleOfAudioInputs.length; i++) {
-		const titleOfAudioValue = titleOfAudioInputs[i].value;
-		try {
-			checkTitle(titleOfAudioValue);
-			allaudioThumbnails.push([titleOfAudioValue]);
-			allaudioPosters.push([titleOfAudioValue]);
-		} catch (error) {
-			break;
-		}
-	 }
+    for (let i = 0; i < titleOfAudioInputs.length; i++) {
+       const titleOfAudioValue = titleOfAudioInputs[i].value;
+       try {
+           checkTitle(titleOfAudioValue);
+           allaudioThumbnails.push([titleOfAudioValue]);
+           allaudioPosters.push([titleOfAudioValue]);
+       } catch (error) {
+           break;
+       }
+    }
 
-	 for (let i = 0; i < audioThumbnailImageInputs.length; i++) {
-		const thumbnailValue = audioThumbnailImageInputs[i].value;
-		try {
-			checkImage(thumbnailValue);
-			
-			const index = i % audioThumbnailImageInputs.length;
-			allaudioThumbnails[index].push(thumbnailValue);
-		} catch (error){
-			break;
-		}
-	 }
-  
-	 for (let i = 0; i < audioPosterImageInputs.length; i++) {
-		const audioposterValue = audioPosterImageInputs[i].value;
-		try {
-			checkImage(audioposterValue);
-			
-			const index = i % audioPosterImageInputs.length;
-			allaudioPosters[index].push(audioposterValue);
-		} catch (error){
-			break;
-		}
-	 }
-  
-	 for (let i = 0; i < audioDurationInputs.length; i++) {
-		const audiodurationValue = audioDurationInputs[i].value;
-		
-		try {
-			checkMedia(audiodurationValue);
-			
-			const index = i % audioDurationInputs.length;
-			allaudioPosters[index].push(audiodurationValue);
-		} catch (error){
-			break;
-		}
+    for (let i = 0; i < audioThumbnailImageInputs.length; i++) {
+       const thumbnailValue = audioThumbnailImageInputs[i].value;
+       try {
+           checkImage(thumbnailValue);
+           
+           const index = i % audioThumbnailImageInputs.length;
+           allaudioThumbnails[index].push(thumbnailValue);
+       } catch (error){
+           break;
+       }
+    }
 
-	 }
+    for (let i = 0; i < audioPosterImageInputs.length; i++) {
+       const audioposterValue = audioPosterImageInputs[i].value;
+       try {
+           checkImage(audioposterValue);
+           
+           const index = i % audioPosterImageInputs.length;
+           allaudioPosters[index].push(audioposterValue);
+       } catch (error){
+           break;
+       }
+    }
 
-	if (errors.length > 0) {
+    for (let i = 0; i < audioDurationInputs.length; i++) {
+       const audiodurationValue = audioDurationInputs[i].value;
+       
+       try {
+           checkMedia(audiodurationValue);
+           
+           const index = i % audioDurationInputs.length;
+           allaudioPosters[index].push(audiodurationValue);
+       } catch (error){
+           break;
+       }
+
+    }
+
+    if (errors.length > 0) {
 		
 		messageHeader.style.display = "block";
 		errorBlock.style.display = "block"; 
@@ -1121,9 +1128,6 @@ form.addEventListener('submit', function(e) {
 
 			allVideoThumbnails();
 			allVideoPosters();
-		
-		
-		
 
 		let jsonAllAudioThumbs = [];
 		let jsonAllAudioPosters = [];
@@ -1200,7 +1204,29 @@ form.addEventListener('submit', function(e) {
 				json['media-player'].medias = [jsonAllVideoThumbs, jsonAllAudioPosters];
 
 		}
-		
+
+		var indices = Array.from({ length: numberOfAccordions }, (_, index) => index + 1);
+	
+		let allAccordions = [];
+		allAccordions = indices.map(index => ({
+			"config-id": `accordion-${index}`,
+			"index": index,
+			"header": {
+			  "image": {
+				"enable": true,
+				"src": `{{imageServer.host}}/pi/sites/infosite/${sfnumber}}/images/template/accordionArrow.png`
+			  },
+			  "html-content": "<h3>Accordion Example</h3>",
+			  "buttons": {
+				"expand": "",
+				"collapse": ""
+			  }
+			}
+		  }));
+
+		  json.accordion = allAccordions;
+		console.log(sfnumber);
+			
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
 
 		const zip = new JSZip();

@@ -71,6 +71,7 @@ input[type="text"] {
 #infosite_tracking > div,
 #infosite_sponsorship,
 #infosite_poll > div,
+#infosite_accordion > div,
 #infosite_number_of_media > div {
   display: flex;
   align-items: center;
@@ -80,6 +81,7 @@ input[type="text"] {
 #infosite_tracking label,
 #infosite_sponsorship label,
 #infosite_poll label,
+#infosite_accordion label,
 #infosite_number_of_media label {
   margin-right: 1em;
 }
