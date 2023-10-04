@@ -57,7 +57,7 @@ function getNumberOfVideos() {
 
 function getNumberOfAudio() {
   const audioTable =
-    "<div class='media_table'><div><input type='text' id='audio_title' name='audio_title' placeholder='audio_title' value='Title'/></div><div><input type='text' id='audio_thumbnail_image_name' name='audio_thumbnail_image_name' placeholder='audio_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='audio_poster_image_name' name='audio_poster_image_name' placeholder='audio_poster_image_name' value='mediaFPO.png' /></div><div><input type='text' id='audio_duration' name='audio_duration' placeholder='audio_duration' value='05:48' /></div></div>";
+    "<div class='media_table'><div><input type='text' id='audio_title' name='audio_title' placeholder='audio_title' value='Title and Description'/></div><div><input type='text' id='audio_thumbnail_image_name' name='audio_thumbnail_image_name' placeholder='audio_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='audio_poster_image_name' name='audio_poster_image_name' placeholder='audio_poster_image_name' value='mediaFPO.png' /></div><div><input type='text' id='audio_duration' name='audio_duration' placeholder='audio_duration' value='05:48' /></div></div>";
   const errorText = "<dir class='errorText'>Please enter a number</dir>";
 
   var selector = document.getElementById("number_of_audios");
