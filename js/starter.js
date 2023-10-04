@@ -33,7 +33,7 @@ function changePages() {
 
 function getNumberOfVideos() {
   const videoTable =
-    "<div class='media_table'><div><input type='text' id='video_title' name='video_title' placeholder='video_title' value='Title'/></div><div><input type='text' id='video_thumbnail_image_name' name='video_thumbnail_image_name' placeholder='video_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_poster_image_name' name='video_poster_image_name' placeholder='video_poster_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_duration' name='video_duration' placeholder='video_duration' value='00:30'  /></div></div>";
+    "<div class='media_table'><div><input type='text' id='video_title' name='video_title' placeholder='video_title' value='Title and Description'/></div><div><input type='text' id='video_thumbnail_image_name' name='video_thumbnail_image_name' placeholder='video_thumbnail_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_poster_image_name' name='video_poster_image_name' placeholder='video_poster_image_name' value='mediaFPO.png'/></div><div><input type='text' id='video_duration' name='video_duration' placeholder='video_duration' value='00:30'  /></div></div>";
   const errorText = "<dir class='errorText'>Please enter a number</dir>";
 
   var selector = document.getElementById("number_of_videos");
