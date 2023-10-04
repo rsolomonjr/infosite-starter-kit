@@ -477,22 +477,35 @@ function pageObjUpdate(num, value) {
 	if (num == 0) {
 		route = '';
 		path = 'home';
+
+		let page = {
+			route: '/' + route,
+			path: '/articles/' + path,
+			template: 'default',
+			'meta-data': {
+				title: value,
+				titleTag: 'Homepage',
+				description: value
+			}
+		};
+		return page;
 	} else {
 		route = 'isarticle-' + num;
 		path = 'article-' + num;
-	}
 
-	let page = {
-		route: '/' + route,
-		path: '/articles/' + path,
-		template: 'default',
-		'meta-data': {
-			title: value,
-			titleTag: 'Information from Industry',
-			description: value
-		}
-	};
-	return page;
+		let page = {
+			route: '/' + route,
+			path: '/articles/' + path,
+			template: 'default',
+			'meta-data': {
+				title: value,
+				titleTag: 'Article ' + num,
+				description: value
+			}
+		};
+		return page;
+	}
+	
 }
 
 function navExternalPages(num, value, checked, url) {
