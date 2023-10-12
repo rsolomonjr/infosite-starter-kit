@@ -1,7 +1,7 @@
 // ERROR CHECKING
 
 function testSFNumber(input) {
-    const regex = /^\d{6}\.\d{0,3}[a-z]?$/;
+    const regex = /^[a-zA-Z][\w\-\.]*$|^\d{6}\.\d{1,2}[a-zA-Z]?$/;
     return regex.test(input);
 }
 

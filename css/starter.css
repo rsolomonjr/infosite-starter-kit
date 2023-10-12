@@ -45,10 +45,6 @@ form {
   margin: 0 auto;
 }
 
-input[type="radio"]{
-  -webkit-appearance: radio;
-}
-
 div[id^="infosite_"],
 input[type="text"],
 input[type="url"],

@@ -25,23 +25,23 @@
         <div id="infosite_tracking">
           <div>
             <label for="tracking_sfnumber">SF#</label>
-            <input type="text" id="tracking_sfnumber" name="sfnumber" placeholder="SF-Number" />
+            <input type="text" id="tracking_sfnumber" name="sfnumber" placeholder="SF-Number" required="" />
           </div>
           <div>
             <label for="tracking_brandName">Brand</label>
-            <input type="text" id="tracking_brandName" name="brandName" placeholder="brandName" />
+            <input type="text" id="tracking_brandName" name="brandName" placeholder="brandName" required="" />
           </div>
           <div>
             <label for="tracking_brandId">Brand ID</label>
-            <input type="text" id="tracking_brandId" name="brandId" placeholder="brandId" />
+            <input type="text" id="tracking_brandId" name="brandId" placeholder="brandId" required="" />
           </div>
           <div>
             <label for="tracking_CP_tcid">Tactic ID</label>
-            <input type="text" id="tracking_CP_tcid" name="tcid" placeholder="tacticId" />
+            <input type="text" id="tracking_CP_tcid" name="tcid" placeholder="tacticId" required="" />
           </div>
           <div>
             <label for="tracking_CP_activityId">Promo Activity ID</label>
-            <input type="text" id="tracking_CP_activityId" name="activityId" placeholder="activityId" />
+            <input type="text" id="tracking_CP_activityId" name="activityId" placeholder="activityId" required="" />
           </div>
         </div>
         <h3>Article Pages</h3>
@@ -79,7 +79,7 @@
             <div id="page_titles_table">
               <div>
                 <div>
-                  <input type="text" id="description" name="description" placeholder="page_title" value="Homepage"
+                  <input type="text" id="description" name="description" placeholder="Homepage"
                     required="" />
                 </div>
                 <div id="radio_button_set1">
@@ -105,7 +105,7 @@
         <div id="infosite_sponsorship">
           <label for="sponsorship">Pharma Co.</label>
           <div>
-            <input type="text" id="sponsorship" name="sponsorship" placeholder="sponsor" />
+            <input type="text" id="sponsorship" name="sponsorship" placeholder="sponsor" required=""/>
           </div>
         </div>
         <h3>Polls</h3>
@@ -144,14 +144,14 @@
             <label for="number_of_videos">Number of Video Media</label>
             <div>
               <input type="text" id="number_of_videos" name="number_of_videos" placeholder="number_of_videos"
-                oninput="getNumberOfVideos()" />
+                oninput="getNumberOfVideos()" required="" />
             </div>
           </div>
           <div>
             <label for="number_of_audios">Number of Audio Media</label>
             <div>
               <input type="text" id="number_of_audios" name="number_of_audios" placeholder="number_of_audios"
-                oninput="getNumberOfAudio()" />
+                oninput="getNumberOfAudio()" required="" />
             </div>
           </div>
           <div id="videos_table">

@@ -680,7 +680,7 @@ form.addEventListener("submit", function(e){
 
 
     // Videos
-
+		
     const titleOfVideoInputs = document.getElementsByName("video_title");
     const thumbnailImageInputs = document.getElementsByName("video_thumbnail_image_name");
     const posterImageInputs = document.getElementsByName("video_poster_image_name");
@@ -702,14 +702,13 @@ form.addEventListener("submit", function(e){
 		json.accordion = []
 	}
 
-
+	e.preventDefault(); // Prevent the default form submission behavior
 
     //Error HTML Block
     const errorBlock = document.querySelector('.error-block');
     const messageHeader = document.querySelector('.messages-header');
 
-    e.preventDefault(); // Prevent the default form submission behavior
-
+    
     let errors = [];
 
     if (!testSFNumber(sfnumber)) {
@@ -740,6 +739,9 @@ form.addEventListener("submit", function(e){
 		errors.push('Invalid Poll ID<br>Numbers only<br>Max 5.');
 	}
 
+	if(radioInputs[0].value === 'external') {
+		errors.push('Homepage can not be external')
+	}
 
     // Define a multidimensional array to store the values
     const values = [];
@@ -756,14 +758,14 @@ form.addEventListener("submit", function(e){
 	}
 
     function checkUrl(externalURL) {
-
 		if(!isValidURL(externalURL)){
-			errors.push('Please enter a valid URL<br>starting with<br>http:// or https://');
-			return errors;
+			return false;
 		} else {
 			return true;
 		}
 	}
+
+	checkUrl(urlInputs[1]); 
 
 
     // Loop through all the "description" inputs and push their values to the array
@@ -782,14 +784,14 @@ form.addEventListener("submit", function(e){
 
     // Loop through all the radio inputs and push their values to the array
     for (let i = 0; i < radioInputs.length; i++) {
-		const radioValue = radioInputs[i].value;
-		// Check if the array already contains an element for the current "description" input
-		const index = i % (descriptionInputs.length * 2);
-		if (values[index]) {
-			values[index].push(radioValue);
-		} else {
-			values.push([ null, radioValue ]);			
-		}
+			const radioValue = radioInputs[i].value;
+			// Check if the array already contains an element for the current "description" input
+			const index = i % (descriptionInputs.length * 2);
+			if (values[index]) {
+				values[index].push(radioValue);
+			} else {
+				values.push([ null, radioValue ]);			
+			}
 	}
 
 
@@ -811,27 +813,13 @@ form.addEventListener("submit", function(e){
             }
         }
 
+	
     function isStringNullOrEmpty(str) {
         return str === null || str.trim() === '';
      }
 
-    function isStringWithValue(str) {
-       return str !== null && str !== undefined && str.trim() !== '';
-    }
 
-
-
-    // Check if URL is empty or null
-    for (let i = 0; i < Object.keys(values).length; i++) {
-            let urlCheck = values[i];
-            let radioChecked = urlCheck[1];
-            let urlEntered = urlCheck[2];
-            if(values[0][1] === 'external') {
-                errors.push("Homepage can not be external")
-            } 
-    }
-
-    for (let i = 0; i < Object.keys(values).length; i++) {
+	 for (let i = 0; i < Object.keys(values).length; i++) {
         let buttonCheck = values[i];
         let buttonChecked = buttonCheck[1];
         let urlisEntered = buttonCheck[2];
@@ -986,7 +974,10 @@ form.addEventListener("submit", function(e){
 
 		errorBlock.innerHTML = errors.map((error) => `<p class="errors">${error}</p>`).join('');
 		document.getElementById('jsonOutput').innerHTML = '';
-		window.scrollTo(0, 0);
+		window.scrollTo({top: 0, behavior: 'smooth'});
+
+		errors = [];
+		
 	} else {
 		// App JSON Object
 
@@ -1093,12 +1084,11 @@ form.addEventListener("submit", function(e){
 		json['medscape-header']['sponsored-message']['html-content'] = json['medscape-header']['sponsored-message']['html-content'].replace(/Pharma Co/g, sponsorText);
 
 		// Videos
-
-	
+		
+		 	
 			let jsonAllVideoThumbs = [];
 			let jsonAllVideoPosters = [];
 
-			let numberVideoThumbs = 1; 
 			function allVideoThumbnails(){
 			for (let i = 0; i < videoThumbnails.length; i++){
 			let videoThumbnail = videoThumbnails[i];
@@ -1195,28 +1185,26 @@ form.addEventListener("submit", function(e){
 		let numVideos = parseInt(document.getElementById('number_of_videos').value);
 		let numAudios = parseInt(document.getElementById('number_of_audios').value);
 
-		if(numVideos === 0 && numAudios === 0){
-			
-			playlists.splice(0, playlists.length);
-			json['media-player'].medias.splice(0, json['media-player'].medias);
+		playlist["playlist-items"] = [];
+		json['media-player'].medias = [];
 
-		} else if (numVideos === 0 && numAudios > 0){
+		if (numVideos === 0 && numAudios > 0) {
 
 			playlist["playlist-items"] = jsonAllAudioThumbs;
 			json['media-player'].medias = jsonAllAudioPosters;
 
-			} else if (numVideos > 0 && numAudios === 0){
-				
-				
-				playlist["playlist-items"] = jsonAllVideoThumbs;
-				json['media-player'].medias = jsonAllVideoPosters;
+		} else if (numVideos > 0 && numAudios === 0) {
 
-			} else {
-				
-				playlist["playlist-items"].push(jsonAllVideoThumbs, jsonAllAudioThumbs);
-				json['media-player'].medias = [jsonAllVideoThumbs, jsonAllAudioPosters];
+			playlist["playlist-items"] = jsonAllVideoThumbs;
+			json['media-player'].medias = jsonAllVideoPosters;
+
+		} else {
+
+			playlist["playlist-items"] = jsonAllVideoThumbs.concat(jsonAllAudioThumbs);
+			json['media-player'].medias = jsonAllVideoPosters.concat(jsonAllAudioPosters);
 
 		}
+
 
 		var indices = Array.from({ length: numberOfAccordions }, (_, index) => index + 1);
 	
@@ -1227,7 +1215,7 @@ form.addEventListener("submit", function(e){
 			"header": {
 			  "image": {
 				"enable": true,
-				"src": `{{imageServer.host}}/pi/sites/infosite/${sfnumber}}/images/template/accordionArrow.png`
+				"src": `{{imageServer.host}}/pi/sites/infosite/${sfnumber}/images/template/accordionArrow.png`
 			  },
 			  "html-content": "<h3>Accordion Example</h3>",
 			  "buttons": {
@@ -1238,7 +1226,7 @@ form.addEventListener("submit", function(e){
 		  }));
 
 		  json.accordion = allAccordions;
-		console.log(sfnumber);
+	
 			
 		document.getElementById('jsonOutput').innerHTML = JSON.stringify(json, null, '\t');
 
