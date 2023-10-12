@@ -1085,7 +1085,7 @@ form.addEventListener("submit", function(e){
 
 		// Videos
 		
-		 	
+			let numberVideoThumbs = 1; 
 			let jsonAllVideoThumbs = [];
 			let jsonAllVideoPosters = [];
 
