@@ -19,7 +19,6 @@ Includes:
 - If ... Else
 
 DEMO: https://rsolomonjr.dev/starter.html <br>
-DEMO: https://infosite_starter.playcode.io/ {click Skip Intro} 
 
 
 
