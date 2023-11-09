@@ -570,11 +570,26 @@ let polls = {
 	}
 };
 
+var imageFolder = "";
+
+function imageDir(imageName){
+	if(imageName == "mediaFPO.png"){
+		imageFolder = "template"
+	} else {
+		imageFolder = "instance"
+	}
+
+	return imageFolder;
+}
+
 function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
+
+	imageDir(thumbnail);
+
 	let videoThumbnail = {
 		'media-id': 'video' + num,
 		title: videoTitleName,
-		thumbnail: `/pi/sites/infosite/${sf}/images/template/${thumbnail}`,
+		thumbnail: `/pi/sites/infosite/${sf}/images/${imageFolder}/${thumbnail}`,
 		description: videoTitleName
 	};
 
@@ -582,6 +597,9 @@ function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
 }
 
 function videoPosterUpdate(numPoster, sfNumber, videoPosterTitleName, posterName, videoTime) {
+
+	imageDir(posterName);
+
 	let videoPoster = {
 		'config-id': 'video' + numPoster,
 		media: {
@@ -590,7 +608,7 @@ function videoPosterUpdate(numPoster, sfNumber, videoPosterTitleName, posterName
 			autoplay: false,
 			source:
 				'/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_1_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4',
-			poster: `/pi/sites/infosite/${sfNumber}/images/template/${posterName}`,
+			poster: `/pi/sites/infosite/${sfNumber}/images/${imageFolder}/${posterName}`,
 			duration: videoTime,
 			ccFileRoot: '',
 			ccInfo: []
@@ -608,10 +626,13 @@ function videoPosterUpdate(numPoster, sfNumber, videoPosterTitleName, posterName
 }
 
 function audioThumbnailUpdate(num, sfAudioNum, audioTitleName, thumbnail) {
+
+	imageDir(thumbnail);
+
 	let audioThumbnail = {
 		'media-id': 'audio' + num,
 		title: audioTitleName,
-		thumbnail: `/pi/sites/infosite/${sfAudioNum}/images/template/${thumbnail}`,
+		thumbnail: `/pi/sites/infosite/${sfAudioNum}/images/${imageFolder}/${thumbnail}`,
 		description: audioTitleName
 	};
 
@@ -619,6 +640,8 @@ function audioThumbnailUpdate(num, sfAudioNum, audioTitleName, thumbnail) {
 }
 
 function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, audioPosterName, audioTime) {
+	imageDir(audioPosterName);
+
 	let audioPoster = {
 		'config-id': 'audio' + numAudioPoster,
 		media: {
@@ -627,7 +650,7 @@ function audioPosterUpdate(numAudioPoster, sfAudioNumber, audioPosterTitleName, 
 			autoplay: true,
 			source:
 				'/delivery/d8/8d/d88d89b7-b333-4374-934d-5c0b57087d18/267440_ITP_S2_Ep1_V4_Approved_2018-12-10_,4500k,a96k,1000k,750k,3000k,400k,2500k,.mp4',
-			poster: `/pi/sites/infosite/${sfAudioNumber}/images/template/${audioPosterName}`,
+			poster: `/pi/sites/infosite/${sfAudioNumber}/images/${imageFolder}/${audioPosterName}`,
 			duration: audioTime,
 			ccFileRoot: '',
 			ccInfo: []
