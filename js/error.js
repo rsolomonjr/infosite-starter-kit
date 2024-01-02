@@ -66,6 +66,12 @@ function isValidBrandName(input) {
     return regex.test(input);
   }
 
+  function isValidFragmentURL(input){
+    //Check if the input is a valid fragment url (starts with / and ends with .mp4)
+    var regex = /^\/delivery\/.*\.mp4$/;
+    return regex.test(input);
+  }
+
   function isImageFile(input) {
     // Check if the input ends with .png, .jpg, or .jpeg
     const regex = /[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
