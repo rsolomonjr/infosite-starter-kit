@@ -490,67 +490,32 @@ let json = {
 };
 
 function pageObjUpdate(num, value) {
-  let route = "";
-  let path = "";
-  if (num == 0) {
-    route = "";
-    path = "home";
-
-    let page = {
-      route: "/" + route,
-      path: "/articles/" + path,
-      template: "default",
-      "meta-data": {
-        title: value,
-        titleTag: "Homepage",
-        description: value,
-      },
-    };
-    return page;
-  } else {
-    route = "isarticle-" + num;
-    path = "article-" + num;
-
-    let page = {
-      route: "/" + route,
-      path: "/articles/" + path,
-      template: "default",
-      "meta-data": {
-        title: value,
-        titleTag: "Article " + num,
-        description: value,
-      },
-    };
-    return page;
-  }
-}
+	const route = num === 0 ? "" : `isarticle-${num}`;
+	const path = num === 0 ? "home" : `article-${num}`;
+   
+	return {
+	   route: `/${route}`,
+	   path: `/articles/${path}`,
+	   template: "default",
+	   "meta-data": {
+		 title: value,
+		 titleTag: num === 0 ? "Homepage" : `Article ${num}`,
+		 description: value,
+	   },
+	};
+   }
 
 function navExternalPages(num, value, checked, url) {
-  let link = {
-    label: value,
-    url: "/",
-    target: "_self",
-    module: "RouterLink",
-  };
+ const isExternal = checked === "external";
+ const targetUrl = isExternal ? url : "/isarticle-" + num;
+ const module = isExternal ? "HtmlContentLink" : "RouterLink";
 
-  let externalLink = {
+ return {
     label: value,
-    url: url,
+    url: targetUrl,
     target: "_self",
-    module: "HtmlContentLink",
-  };
-
-  if (num != 0 && checked === "internal") {
-    link = {
-      label: value,
-      url: "/isarticle-" + num,
-      target: "_self",
-      module: "RouterLink",
-    };
-  } else if (num != 0 && checked === "external") {
-    link = externalLink;
-  }
-  return link;
+    module: module,
+ };
 }
 
 let polls = {
@@ -590,14 +555,9 @@ let polls = {
 var imageFolder = "";
 
 function imageDir(imageName) {
-  if (imageName == "mediaFPO.png") {
-    imageFolder = "template";
-  } else {
-    imageFolder = "instance";
-  }
-
-  return imageFolder;
-}
+	const imageFolder = imageName === "mediaFPO.png" ? "template" : "instance";
+	return imageFolder;
+   }
 
 function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
   imageDir(thumbnail);
@@ -803,22 +763,17 @@ form.addEventListener("submit", function (e) {
   // Define a multidimensional array to store the values
   const values = [];
 
-  function checkTitles(titleDescription) {
+  const checkTitles = (titleDescription) => {
     if (!isTitleCase(titleDescription)) {
-      errors.push("Please enter a title<br>that is Title Case.");
-      return errors;
+      return [
+        "Please enter a title<br>that is Title Case."
+      ];
     } else {
-      return true;
+      return [];
     }
-  }
+ }
 
-  function checkUrl(externalURL) {
-    if (!isValidURL(externalURL)) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  const checkUrl = (externalURL) => isValidURL(externalURL);
 
   checkUrl(urlInputs[1]);
 
