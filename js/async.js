@@ -1,492 +1,474 @@
 /* INFOSITE JSON SKELETON*/
 let json = {
-  app: {
-    "app-server": {
-      path: "/infosites/IS-template-22.11",
-    },
-    "image-server": {
-      path: "/pi/sites/infosite/IS-template-22.11",
-    },
-  },
-  tracking: {
-    "RTS-timer": 5,
-    "SF-Number": "123456.25",
-    brandName: "Medscape",
-    brandId: "3001",
-    productName: "infosite",
-    productId: "19",
-    partnerCreativeId: "",
-    CP: {
-      appName: "infosite",
-      activityId: "82043",
-      activityName: "infosite",
-      tacticId: "69420",
-    },
-  },
-  templates: [
-    {
-      name: "default",
-      type: "",
-      "nav-anchor": "",
-      modal: {
-        enable: false,
-        "config-id": "indications",
-      },
-      indications: {
-        path: "",
-        header: "",
-        article: false,
-        drawer: false,
-      },
-      isi: {
-        path: "/templates/isi",
-        header: "<span id='isi'>Important Safety Information</span>",
-        article: true,
-        drawer: true,
-      },
-      header: {
-        path: "/templates/header",
-      },
-      footer: {
-        path: "/templates/footer",
-      },
-      "side-drawer": {
-        path: "/templates/side-drawer",
-      },
-      classes: {
-        "main-content": "",
-        navigation: "",
-        article: "",
-      },
-    },
-  ],
-  pages: [
-    {
-      route: "/",
-      path: "/articles/home",
-      template: "default",
-      "meta-data": {
-        title: "Homepage",
-        titleTag: "Homepage",
-        description: "Homepage",
-      },
-    },
-    {
-      route: "/isarticle-1",
-      path: "/articles/article-1",
-      template: "default",
-      "meta-data": {
-        title: "Article 1 Title",
-        titleTag: "Article 1",
-        description: "Article 1 Title",
-      },
-    },
-    {
-      route: "/isarticle-2",
-      path: "/articles/article-2",
-      template: "default",
-      "meta-data": {
-        title: "Article 2 Title",
-        titleTag: "Article 2",
-        description: "Article 2 Title",
-      },
-    },
-    {
-      route: "/isarticle-3",
-      path: "/articles/article-3",
-      template: "default",
-      "meta-data": {
-        title: "Article 3 Title",
-        titleTag: "Article 3",
-        description: "Article 3 Title",
-      },
-    },
-    {
-      route: "/isarticle-4",
-      path: "/articles/article-4",
-      template: "default",
-      "meta-data": {
-        title: "Article 4 Title",
-        titleTag: "Article 4",
-        description: "Article 4 Title",
-      },
-    },
-  ],
-  navigation: {
-    links: [
-      {
-        label: "Infosite Home",
-        url: "/",
-        target: "_self",
-        module: "RouterLink",
-      },
-      {
-        label: "Article 1 Title",
-        url: "/isarticle-1",
-        target: "_self",
-        module: "RouterLink",
-      },
-      {
-        label: "Article 2 Title",
-        url: "/isarticle-2",
-        target: "_self",
-        module: "RouterLink",
-      },
-      {
-        label: "Article 3 Title",
-        url: "/isarticle-3",
-        target: "_self",
-        module: "RouterLink",
-      },
-      {
-        label: "Article 4 Title",
-        url: "/isarticle-4",
-        target: "_self",
-        module: "RouterLink",
-      },
-    ],
-  },
-  "medscape-header": {
-    container: {
-      className: "",
-      styles: "",
-    },
-    logo: {
-      className: "",
-      styles: "",
-    },
-    "sponsored-message": {
-      "html-content":
-        "Developed under the direction and sponsorship of <span class='nobr'>Pharma Co.</span>",
-      className: "",
-      styles: "",
-    },
-  },
-  "side-drawer": {
-    anchor: "right",
-  },
-  isi: {
-    article: {
-      "intersection-observer": {
-        enable: true,
-        rootMargin: "0px 0px 0px 0px",
-      },
-      classes: {
-        "intersection-observer": "",
-        head: "",
-        "html-content": "",
-      },
-    },
-    drawer: {
-      open: false,
-      classes: {
-        "drawer-content": "",
-        head: "",
-        "head-container": "",
-      },
-      accept: {
-        enable: false,
-        button: "",
-      },
-      "auto-close": {
-        enable: false,
-        timer: 2000,
-      },
-      "auto-scroll": {
-        enable: false,
-        speed: 100,
-      },
-      buttons: {
-        expand: "",
-        collapse: "",
-      },
-    },
-  },
-  polls: [
-    {
-      "config-id": "test",
-      title: "Poll",
-      "questionnaire-id": "60635",
-      "form-id": "1",
-      "ui-configs": {
-        "question-numbers": {
-          enable: false,
-          text: "{{counter}}.",
-        },
-        select: {
-          label: true,
-          props: {
-            autoWidth: true,
-            variant: "standard",
-          },
-        },
-        textfield: {
-          label: true,
-          props: {
-            variant: "standard",
-            rows: 4,
-          },
-        },
-        "response-message": {
-          enable: false,
-          text: "Thank You",
-        },
-        "submit-button": {
-          label: "Submit",
-        },
-      },
-    },
-  ],
-  "media-player": {
-    playlists: [
-      {
-        "config-id": "playlist-1",
-        bookmark: {
-          enable: false,
-          notification: {
-            enable: false,
-            content: "You last viewed this program on<br>{{date}}",
-            "display-timer": 2000,
-          },
-        },
-        "playlist-items": [
-          {
-            "media-id": "video1",
-            title: "Video 1",
-            thumbnail:
-              "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-            description: "This is a description 1",
-          },
-          {
-            "media-id": "video2",
-            title: "Video 2",
-            thumbnail:
-              "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-            description: "This is a description 2",
-          },
-          {
-            "media-id": "video3",
-            title: "Video 3",
-            thumbnail:
-              "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-            description: "This is a description 3",
-          },
-        ],
-        "ui-configs": {
-          "playlist-item": {
-            classes: {
-              root: "",
-              "thumbnail-image": "",
-              "meta-info": "",
-            },
-            "play-tag": {
-              playing: {
-                enable: true,
-                "html-text": "NOW PLAYING",
-              },
-              played: {
-                enable: true,
-                "html-text": "WATCHED",
-              },
-            },
-            duration: {
-              enable: true,
-            },
-          },
-          carousel: {
-            adaptiveHeight: false,
-            arrows: true,
-            accessibility: false,
-            centerMode: false,
-            centerPadding: "0px",
-            className: "",
-            dots: false,
-            draggable: false,
-            easing: "",
-            fade: false,
-            focusOnSelect: false,
-            initialSlide: 0,
-            infinite: false,
-            lazyLoad: false,
-            slidesToShow: 3.3,
-            slidesToScroll: 1,
-            speed: 500,
-            swipeToSlide: true,
-            vertical: false,
-            responsive: [
-              {
-                breakpoint: 1280,
-                settings: {
-                  vertical: false,
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                },
-              },
-              {
-                breakpoint: 400,
-                settings: {
-                  vertical: false,
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                },
-              },
-            ],
-          },
-        },
-      },
-    ],
-    medias: [
-      {
-        "config-id": "video1",
-        media: {
-          title: "Video 1 Title",
-          medium: "video",
-          autoplay: false,
-          source:
-            "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_1_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-          poster:
-            "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-          duration: "00:30",
-          ccFileRoot: "",
-          ccInfo: [],
-        },
-        "html-title": {
-          enable: true,
-          title: "Video 1 Html Title",
-        },
-        controls: {
-          fullscreen: true,
-        },
-        "tracking-pixels": {
-          start: "",
-          "25pct": "",
-          "50pct": "",
-          "75pct": "",
-          "100pct": "",
-        },
-      },
-      {
-        "config-id": "video2",
-        media: {
-          title: "Video 2 Title",
-          medium: "video",
-          autoplay: true,
-          source:
-            "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_2_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-          poster:
-            "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-          duration: "00:30",
-          ccFileRoot: "",
-          ccInfo: [],
-        },
-        "html-title": {
-          enable: true,
-          title: "Video 2 Html Title",
-        },
-        controls: {
-          fullscreen: true,
-        },
-      },
-      {
-        "config-id": "video3",
-        media: {
-          title: "Video 3 Title",
-          medium: "video",
-          autoplay: true,
-          source:
-            "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_3_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-          poster:
-            "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
-          duration: "00:30",
-          ccFileRoot: "",
-          ccInfo: [],
-        },
-        "html-title": {
-          enable: true,
-          title: "Video 3 Html Title",
-        },
-        controls: {
-          fullscreen: true,
-        },
-      },
-    ],
-  },
-  carousel: [],
-  formulary: {
-    path: "",
-  },
-  "gift-manager": {
-    "promo-activity-id": "",
-    "package-id": "",
-    form: {
-      emailHide: false,
-      officeRoadHide: false,
-      officeCityHide: false,
-      stateHide: false,
-      zipHide: false,
-      countryHide: false,
-    },
-  },
-  "zoom-images": [],
-  "uld-banner": {
-    enable: false,
-    "html-content": "",
-    classes: {
-      "uld-drawer": "",
-      "uld-drawer-paper": "",
-      "uld-banner": "",
-      "html-content": "No ULD-banner on US demo",
-      buttons: "",
-    },
-    buttons: {
-      accept: "",
-      decline: "",
-      classes: {
-        "buttons-flex-container": "",
-        accept: "",
-        decline: "",
-      },
-    },
-  },
-  resources: [],
-  "additional-resources": [],
-  "share-widgets": [],
-  "twitter-timeline": {
-    "account-name": "",
-    "tweet-limit": 3,
-    chrome: {
-      noheader: true,
-      nofooter: true,
-      noborders: false,
-      noscrollbar: false,
-      transparent: true,
-    },
-  },
-  "consult-widget": [],
-  "consult-ad": {
-    title: "",
-    items: [],
-  },
-  comments: [],
-  "media-slides": [],
-  accordion: [
-    {
-      "config-id": "accordion-1",
-      index: 1,
-      header: {
-        image: {
-          enable: true,
-          src: "{{imageServer.host}}/pi/sites/infosite/IS-template-22.11/images/template/accordionArrow.png",
-        },
-        "html-content": "<h3>Accordion Example</h3>",
-        buttons: {
-          expand: "",
-          collapse: "",
-        },
-      },
-    },
-  ],
-  modal: [],
+	"app": {
+		"app-server": {
+			"path": "/infosites/IS-template-22.11"
+		},
+		"image-server": {
+			"path": "/pi/sites/infosite/IS-template-22.11"
+		}
+	},
+	"tracking": {
+		"RTS-timer": 5,
+		"SF-Number": "123456.25",
+		"brandName": "Medscape",
+		"brandId": "3001",
+		"productName": "infosite",
+		"productId": "19",
+		"partnerCreativeId": "",
+		"CP": {
+			"appName": "infosite",
+			"activityId": "82043",
+			"activityName": "infosite",
+			"tacticId": "69420"
+		}
+	},
+	"templates": [{
+		"name": "default",
+		"type": "",
+		"nav-anchor": "",
+		"modal": {
+			"enable": false,
+			"config-id": "indications"
+		},
+		"indications": {
+			"path": "",
+			"header": "",
+			"article": false,
+			"drawer": false
+		},
+		"isi": {
+			"path": "/templates/isi",
+			"header": "<span id='isi'>Important Safety Information</span>",
+			"article": true,
+			"drawer": true
+		},
+		"header": {
+			"path": "/templates/header"
+		},
+		"footer": {
+			"path": "/templates/footer"
+		},
+		"side-drawer": {
+			"path": "/templates/side-drawer"
+		},
+		"classes": {
+			"main-content": "",
+			"navigation": "",
+			"article": ""
+		}
+	}
+							 ],
+	"pages": [{
+			"route": "/",
+			"path": "/articles/home",
+			"template": "default",
+			"meta-data": {
+				"title": "Homepage",
+				"titleTag": "Homepage",
+				"description": "Homepage"
+			}
+		},
+		{
+			"route": "/isarticle-1",
+			"path": "/articles/article-1",
+			"template": "default",
+			"meta-data": {
+				"title": "Article 1 Title",
+				"titleTag": "Article 1",
+				"description": "Article 1 Title"
+			}
+		},
+		{
+			"route": "/isarticle-2",
+			"path": "/articles/article-2",
+			"template": "default",
+			"meta-data": {
+				"title": "Article 2 Title",
+				"titleTag": "Article 2",
+				"description": "Article 2 Title"
+			}
+		},
+		{
+			"route": "/isarticle-3",
+			"path": "/articles/article-3",
+			"template": "default",
+			"meta-data": {
+				"title": "Article 3 Title",
+				"titleTag": "Article 3",
+				"description": "Article 3 Title"
+			}
+		},
+		{
+			"route": "/isarticle-4",
+			"path": "/articles/article-4",
+			"template": "default",
+			"meta-data": {
+				"title": "Article 4 Title",
+				"titleTag": "Article 4",
+				"description": "Article 4 Title"
+			}
+		}
+	],
+	"navigation": {
+		"links": [{
+				"label": "Infosite Home",
+				"url": "/",
+				"target": "_self",
+				"module": "RouterLink"
+			},
+			{
+				"label": "Article 1 Title",
+				"url": "/isarticle-1",
+				"target": "_self",
+				"module": "RouterLink"
+			},
+			{
+				"label": "Article 2 Title",
+				"url": "/isarticle-2",
+				"target": "_self",
+				"module": "RouterLink"
+			},
+			{
+				"label": "Article 3 Title",
+				"url": "/isarticle-3",
+				"target": "_self",
+				"module": "RouterLink"
+			},
+			{
+				"label": "Article 4 Title",
+				"url": "/isarticle-4",
+				"target": "_self",
+				"module": "RouterLink"
+			}
+		]
+
+	},
+	"medscape-header": {
+		"container": {
+			"className": "",
+			"styles": ""
+		},
+		"logo": {
+			"className": "",
+			"styles": ""
+		},
+		"sponsored-message": {
+			"html-content": "Developed under the direction and sponsorship of <span class='nobr'>Pharma Co.</span>",
+			"className": "",
+			"styles": ""
+		}
+	},
+	"side-drawer": {
+		"anchor": "right"
+	},
+	"isi": {
+		"article": {
+
+			"intersection-observer": {
+				"enable": true,
+				"rootMargin": "0px 0px 0px 0px"
+			},
+			"classes": {
+				"intersection-observer": "",
+				"head": "",
+				"html-content": ""
+			}
+		},
+		"drawer": {
+			"open": false,
+			"classes": {
+				"drawer-content": "",
+				"head": "",
+				"head-container": ""
+			},
+			"accept": {
+				"enable": false,
+				"button": ""
+			},
+			"auto-close": {
+				"enable": false,
+				"timer": 2000
+			},
+			"auto-scroll": {
+				"enable": false,
+				"speed": 100
+			},
+			"buttons": {
+				"expand": "",
+				"collapse": ""
+			}
+		}
+	},
+	"polls": [{
+			"config-id": "test",
+			"title": "Poll",
+			"questionnaire-id": "60635",
+			"form-id": "1",
+			"ui-configs": {
+				"question-numbers": {
+					"enable": false,
+					"text": "{{counter}}."
+				},
+				"select": {
+					"label": true,
+					"props": {
+						"autoWidth": true,
+						"variant": "standard"
+					}
+				},
+				"textfield": {
+					"label": true,
+					"props": {
+						"variant": "standard",
+						"rows": 4
+					}
+				},
+				"response-message": {
+					"enable": false,
+					"text": "Thank You"
+				},
+				"submit-button": {
+					"label": "Submit"
+				}
+			}
+		}
+	],
+	"media-player": {
+		"playlists": [{
+			"config-id": "playlist-1",
+			"bookmark": {
+				"enable": false,
+				"notification": {
+					"enable": false,
+					"content": "You last viewed this program on<br>{{date}}",
+					"display-timer": 2000
+				}
+			},
+			"playlist-items": [{
+					"media-id": "video1",
+					"title": "Video 1",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"description": "This is a description 1"
+				},
+				{
+					"media-id": "video2",
+					"title": "Video 2",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"description": "This is a description 2"
+				},
+				{
+					"media-id": "video3",
+					"title": "Video 3",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"description": "This is a description 3"
+				}
+			],
+			"ui-configs": {
+				"playlist-item": {
+					"classes": {
+						"root": "",
+						"thumbnail-image": "",
+						"meta-info": ""
+					},
+					"play-tag": {
+						"playing": {
+							"enable": true,
+							"html-text": "NOW PLAYING"
+						},
+						"played": {
+							"enable": true,
+							"html-text": "WATCHED"
+						}
+					},
+					"duration": {
+						"enable": true
+					}
+				},
+				"carousel": {
+					"adaptiveHeight": false,
+					"arrows": true,
+					"accessibility": false,
+					"centerMode": false,
+					"centerPadding": "0px",
+					"className": "",
+					"dots": false,
+					"draggable": false,
+					"easing": "",
+					"fade": false,
+					"focusOnSelect": false,
+					"initialSlide": 0,
+					"infinite": false,
+					"lazyLoad": false,
+					"slidesToShow": 3.3,
+					"slidesToScroll": 1,
+					"speed": 500,
+					"swipeToSlide": true,
+					"vertical": false,
+					"responsive": [{
+							"breakpoint": 1280,
+							"settings": {
+								"vertical": false,
+								"slidesToShow": 4,
+								"slidesToScroll": 1
+							}
+						},
+						{
+							"breakpoint": 400,
+							"settings": {
+								"vertical": false,
+								"slidesToShow": 2,
+								"slidesToScroll": 1
+							}
+						}
+					]
+				}
+			}
+		}],
+		"medias": [{
+				"config-id": "video1",
+				"media": {
+					"title": "Video 1 Title",
+					"medium": "video",
+					"autoplay": false,
+					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_1_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"duration": "00:30",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Video 1 Html Title"
+				},
+				"controls": {
+					"fullscreen": true
+				},
+				"tracking-pixels": {
+					"start": "",
+					"25pct": "",
+					"50pct": "",
+					"75pct": "",
+					"100pct": ""
+				}
+			},
+			{
+				"config-id": "video2",
+				"media": {
+					"title": "Video 2 Title",
+					"medium": "video",
+					"autoplay": true,
+					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_2_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"duration": "00:30",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Video 2 Html Title"
+				},
+				"controls": {
+					"fullscreen": true
+				}
+			},
+			{
+				"config-id": "video3",
+				"media": {
+					"title": "Video 3 Title",
+					"medium": "video",
+					"autoplay": true,
+					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_3_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"duration": "00:30",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Video 3 Html Title"
+				},
+				"controls": {
+					"fullscreen": true
+				}
+			}
+		]
+	},
+	"carousel": [],
+	"formulary": {
+		"path": ""
+	},
+	"gift-manager": {
+		"promo-activity-id": "",
+		"package-id": "",
+		"form": {
+			"emailHide": false,
+			"officeRoadHide": false,
+			"officeCityHide": false,
+			"stateHide": false,
+			"zipHide": false,
+			"countryHide": false
+		}
+	},
+	"zoom-images": [],
+	"uld-banner": {
+		"enable": false,
+		"html-content": "",
+		"classes": {
+			"uld-drawer": "",
+			"uld-drawer-paper": "",
+			"uld-banner": "",
+			"html-content": "No ULD-banner on US demo",
+			"buttons": ""
+		},
+		"buttons": {
+			"accept": "",
+			"decline": "",
+			"classes": {
+				"buttons-flex-container": "",
+				"accept": "",
+				"decline": ""
+			}
+		}
+	},
+	"resources": [],
+	"additional-resources": [],
+	"share-widgets": [],
+	"twitter-timeline": {
+		"account-name": "",
+		"tweet-limit": 3,
+		"chrome": {
+			"noheader": true,
+			"nofooter": true,
+			"noborders": false,
+			"noscrollbar": false,
+			"transparent": true
+		}
+	},
+	"consult-widget": [],
+	"consult-ad": {
+		"title": "",
+		"items": []
+	},
+	"comments": [],
+	"media-slides": [],
+	"accordion": [{
+			"config-id": "accordion-1",
+			"index": 1,
+			"header": {
+				"image": {
+					"enable": true,
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.11/images/template/accordionArrow.png"
+				},
+				"html-content": "<h3>Accordion Example</h3>",
+				"buttons": {
+					"expand": "",
+					"collapse": ""
+				}
+			}
+		}
+	],
+	"modal": []
 };
 
 function pageObjUpdate(num, value) {
@@ -507,7 +489,7 @@ function pageObjUpdate(num, value) {
 
 function navExternalPages(num, value, checked, url) {
  const isExternal = checked === "external";
- const targetUrl = isExternal ? url : "/isarticle-" + num;
+ const targetUrl = isExternal ? url : num === 0 ? "/" : "/isarticle-" + num;
  const module = isExternal ? "HtmlContentLink" : "RouterLink";
 
  return {
