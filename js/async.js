@@ -2,10 +2,10 @@
 let json = {
 	"app": {
 		"app-server": {
-			"path": "/infosites/IS-template-22.11"
+			"path": "/infosites/IS-template-22.12.1"
 		},
 		"image-server": {
-			"path": "/pi/sites/infosite/IS-template-22.11"
+			"path": "/pi/sites/infosite/IS-template-22.12.1"
 		}
 	},
 	"tracking": {
@@ -24,41 +24,76 @@ let json = {
 		}
 	},
 	"templates": [{
-		"name": "default",
-		"type": "",
-		"nav-anchor": "",
-		"modal": {
-			"enable": false,
-			"config-id": "indications"
+			"name": "default",
+			"type": "",
+			"nav-anchor": "",
+			"modal": {
+				"enable": false,
+				"config-id": "indications"
+			},
+			"indications": {
+				"path": "",
+				"header": "",
+				"article": false,
+				"drawer": false
+			},
+			"isi": {
+				"path": "/templates/isi",
+				"header": "<span id='isi'>Important Safety Information</span>",
+				"article": true,
+				"drawer": true
+			},
+			"header": {
+				"path": "/templates/header"
+			},
+			"footer": {
+				"path": "/templates/footer"
+			},
+			"side-drawer": {
+				"path": "/templates/side-drawer"
+			},
+			"classes": {
+				"main-content": "",
+				"navigation": "",
+				"article": ""
+			}
 		},
-		"indications": {
-			"path": "",
-			"header": "",
-			"article": false,
-			"drawer": false
-		},
-		"isi": {
-			"path": "/templates/isi",
-			"header": "<span id='isi'>Important Safety Information</span>",
-			"article": true,
-			"drawer": true
-		},
-		"header": {
-			"path": "/templates/header"
-		},
-		"footer": {
-			"path": "/templates/footer"
-		},
-		"side-drawer": {
-			"path": "/templates/side-drawer"
-		},
-		"classes": {
-			"main-content": "",
-			"navigation": "",
-			"article": ""
+		{
+			"name": "doubleScroll",
+			"type": "",
+			"nav-anchor": "",
+			"modal": {
+				"enable": false,
+				"config-id": "indications"
+			},
+			"indications": {
+				"path": "/templates/indications",
+				"header": "Indications",
+				"article": true,
+				"drawer": true
+			},
+			"isi": {
+				"path": "/templates/isi",
+				"header": "<span id='isi' class='jumpTarget'>Important Safety Information</span>",
+				"article": true,
+				"drawer": true
+			},
+			"header": {
+				"path": "/templates/header"
+			},
+			"footer": {
+				"path": "/templates/footer"
+			},
+			"side-drawer": {
+				"path": "/templates/side-drawer"
+			},
+			"classes": {
+				"main-content": "container",
+				"navigation": "",
+				"article": ""
+			}
 		}
-	}
-							 ],
+	],
 	"pages": [{
 			"route": "/",
 			"path": "/articles/home",
@@ -74,9 +109,9 @@ let json = {
 			"path": "/articles/article-1",
 			"template": "default",
 			"meta-data": {
-				"title": "Article 1 Title",
+				"title": "Treatment Guidelines",
 				"titleTag": "Article 1",
-				"description": "Article 1 Title"
+				"description": "Treatment Guidelines"
 			}
 		},
 		{
@@ -84,9 +119,9 @@ let json = {
 			"path": "/articles/article-2",
 			"template": "default",
 			"meta-data": {
-				"title": "Article 2 Title",
+				"title": "Clinical Data",
 				"titleTag": "Article 2",
-				"description": "Article 2 Title"
+				"description": "Clinical Data"
 			}
 		},
 		{
@@ -94,9 +129,9 @@ let json = {
 			"path": "/articles/article-3",
 			"template": "default",
 			"meta-data": {
-				"title": "Article 3 Title",
+				"title": "Efficacy and Safety Data",
 				"titleTag": "Article 3",
-				"description": "Article 3 Title"
+				"description": "Efficacy and Safety Data"
 			}
 		},
 		{
@@ -104,9 +139,39 @@ let json = {
 			"path": "/articles/article-4",
 			"template": "default",
 			"meta-data": {
-				"title": "Article 4 Title",
+				"title": "Video: MOA",
 				"titleTag": "Article 4",
-				"description": "Article 4 Title"
+				"description": "Video: MOA"
+			}
+		},
+		{
+			"route": "/isarticle-5",
+			"path": "/articles/article-5",
+			"template": "default",
+			"meta-data": {
+				"title": "iframe",
+				"titleTag": "Article 5",
+				"description": "iframe"
+			}
+		},
+		{
+			"route": "/isarticle-6",
+			"path": "/articles/article-6",
+			"template": "doubleScroll",
+			"meta-data": {
+				"title": "Media: Podcast",
+				"titleTag": "Article 6",
+				"description": "Media: Podcast"
+			}
+		},
+		{
+			"route": "/isarticle-7",
+			"path": "/articles/article-7",
+			"template": "default",
+			"meta-data": {
+				"title": "iframe test",
+				"titleTag": "Article 7",
+				"description": "iframe test"
 			}
 		}
 	],
@@ -118,28 +183,82 @@ let json = {
 				"module": "RouterLink"
 			},
 			{
-				"label": "Article 1 Title",
+				"label": "Treatment Guidelines",
 				"url": "/isarticle-1",
 				"target": "_self",
 				"module": "RouterLink"
 			},
 			{
-				"label": "Article 2 Title",
+				"label": "Clinical Data",
 				"url": "/isarticle-2",
 				"target": "_self",
 				"module": "RouterLink"
 			},
 			{
-				"label": "Article 3 Title",
+				"label": "Efficacy and Safety Data",
 				"url": "/isarticle-3",
 				"target": "_self",
 				"module": "RouterLink"
 			},
 			{
-				"label": "Article 4 Title",
+				"label": "Video: MOA",
 				"url": "/isarticle-4",
 				"target": "_self",
 				"module": "RouterLink"
+			},
+			{
+				"label": "Modal link",
+				"url": "",
+				"target": "_self",
+				"module": "ModalLink",
+				"config-id": "indications"
+			},
+			{
+				"label": "Submenu demo",
+				"url": "/isarticle-4",
+				"target": "_self",
+				"module": "SubMenu",
+				"submenu": {
+					"side-drawer": {
+						"module": "Accordion",
+						"ui-config": {
+							"expanded": true,
+							"disabled": false
+						}
+					},
+					"side-article": {
+						"module": "Accordion",
+						"ui-config": {
+							"expanded": false,
+							"disabled": false
+						}
+					},
+					"top-article": {
+						"module": "Popper",
+						"ui-config": {
+							"placement": "bottom-start"
+						}
+					},
+					"links": [{
+							"label": "Sub-link 1",
+							"url": "https://www.google.com/",
+							"target": "_blank",
+							"module": "HtmlLink"
+						},
+						{
+							"label": "Sub-link 2",
+							"url": "https://www.google.com/",
+							"target": "_blank",
+							"module": "HtmlLink"
+						},
+						{
+							"label": "Sub-link 3",
+							"url": "https://www.google.com/",
+							"target": "_blank",
+							"module": "HtmlLink"
+						}
+					]
+				}
 			}
 		]
 
@@ -232,6 +351,39 @@ let json = {
 					"label": "Submit"
 				}
 			}
+		},
+		{
+			"config-id": "test2",
+			"title": "Poll2",
+			"questionnaire-id": "60635",
+			"form-id": "2",
+			"ui-configs": {
+				"question-numbers": {
+					"enable": false,
+					"text": "{{counter}}."
+				},
+				"select": {
+					"label": true,
+					"props": {
+						"autoWidth": true,
+						"variant": "standard"
+					}
+				},
+				"textfield": {
+					"label": true,
+					"props": {
+						"variant": "standard",
+						"rows": 4
+					}
+				},
+				"response-message": {
+					"enable": false,
+					"text": ""
+				},
+				"submit-button": {
+					"label": "Submit"
+				}
+			}
 		}
 	],
 	"media-player": {
@@ -248,20 +400,38 @@ let json = {
 			"playlist-items": [{
 					"media-id": "video1",
 					"title": "Video 1",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"description": "This is a description 1"
 				},
 				{
 					"media-id": "video2",
 					"title": "Video 2",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"description": "This is a description 2"
 				},
 				{
 					"media-id": "video3",
 					"title": "Video 3",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"description": "This is a description 3"
+				},
+				{
+					"media-id": "video4",
+					"title": "Video 4",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"description": "This is a description 4"
+				},
+				{
+					"media-id": "video5",
+					"title": "Video 5",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"description": "This is a description 5"
+				},
+				{
+					"media-id": "audio1",
+					"title": "Audio 1",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"description": "This is audio-only media"
 				}
 			],
 			"ui-configs": {
@@ -300,8 +470,8 @@ let json = {
 					"initialSlide": 0,
 					"infinite": false,
 					"lazyLoad": false,
-					"slidesToShow": 3.3,
-					"slidesToScroll": 1,
+					"slidesToShow": 3,
+					"slidesToScroll": 3,
 					"speed": 500,
 					"swipeToSlide": true,
 					"vertical": false,
@@ -332,7 +502,7 @@ let json = {
 					"medium": "video",
 					"autoplay": false,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_1_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -350,8 +520,57 @@ let json = {
 					"50pct": "",
 					"75pct": "",
 					"100pct": ""
-				}
 			},
+            "chapters": {
+                "enable": false,
+                "ui-configs": {
+                    "always-visible": {
+                        "enable": true,
+                        "auto-open": {
+                            "enable": false,
+                            "timer": 1000,
+                            "auto-hide": {
+                                "enable": false,
+                                "timer": 6000
+                            }
+                        }
+                    },
+                    "menu": {
+                        "hide-on-chapter-click": false,
+                        "heading": {
+                            "enable": true,
+                            "html-content": ""
+                        },
+                        "hide-icon": {
+                            "use-default": true,
+                            "html-content": ""
+                        }
+                    }
+                },
+                "items": [
+                    {
+                        "chapterName": "Introduction",
+                        "startTime": "00:05"
+                    },
+                    {
+                        "chapterName": "Chapter 1",
+                        "startTime": "00:10"
+                    },
+                    {
+                        "chapterName": "Chapter 2",
+                        "startTime": "00:15"
+                    },
+                    {
+                        "chapterName": "Chapter 3",
+                        "startTime": "00:20"
+                    },
+                    {
+                        "chapterName": "Chapter 4",
+                        "startTime": "00:25"
+                    }
+                ]
+            }
+        },
 			{
 				"config-id": "video2",
 				"media": {
@@ -359,7 +578,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_2_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -370,6 +589,13 @@ let json = {
 				},
 				"controls": {
 					"fullscreen": true
+				},
+				"tracking-pixels": {
+					"start": "",
+					"25pct": "",
+					"50pct": "",
+					"75pct": "",
+					"100pct": ""
 				}
 			},
 			{
@@ -379,7 +605,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_3_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.11/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -391,10 +617,219 @@ let json = {
 				"controls": {
 					"fullscreen": true
 				}
+			},
+			{
+				"config-id": "video4",
+				"media": {
+					"title": "Video 4 Title",
+					"medium": "video",
+					"autoplay": true,
+					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_4_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"duration": "00:30",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Video 4 Html Title"
+				},
+				"controls": {
+					"fullscreen": true
+				}
+			},
+			{
+				"config-id": "video5",
+				"media": {
+					"title": "Vide&#337; 5 Title",
+					"medium": "video",
+					"autoplay": true,
+					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_5_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"duration": "00:30",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Vide&#337; 5 Html Title"
+				},
+				"controls": {
+					"fullscreen": true
+				},
+				"tracking-pixels": {
+					"start": "",
+					"25pct": "",
+					"50pct": "",
+					"75pct": "",
+					"100pct": ""
+				}
+			},
+			{
+				"config-id": "audio1",
+				"media": {
+					"title": "Audio 1 Title",
+					"medium": "audio",
+					"autoplay": true,
+					"source": "/delivery/d8/8d/d88d89b7-b333-4374-934d-5c0b57087d18/267440_ITP_S2_Ep1_V4_Approved_2018-12-10_,4500k,a96k,1000k,750k,3000k,400k,2500k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"duration": "05:48",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"html-title": {
+					"enable": true,
+					"title": "Audio 1 Html Title"
+				},
+				"controls": {
+					"fullscreen": false
+				},
+				"tracking-pixels": {
+					"start": "",
+					"25pct": "",
+					"50pct": "",
+					"75pct": "",
+					"100pct": ""
+				}
 			}
 		]
 	},
-	"carousel": [],
+	"carousel": [{
+		"config-id": "carousel-1",
+		"slide-counter": {
+			"enable": true,
+			"className": "",
+			"html": "{{index}} of {{totalSlides}}"
+		},
+		"icons": {
+			"nextArrow": "<img src='{{imageServer.path}}/images/template/right-arrow.svg' alt='graphic'>",
+			"prevArrow": "<img src='{{imageServer.path}}/images/template/left-arrow.svg' alt='graphic'>"
+		},
+		"carousel-widgets": {
+			"enable": false,
+			"className": "",
+			"links": {
+				"enable": true,
+				"className": "",
+				"html": ""
+			},
+			"notes": {
+				"className": "",
+				"html": "carousel note"
+			}
+		},
+		"links-layer": {
+			"className": "",
+			"html": "<div class='references'><h3>Links Layer</h3><ol><li>Auctor tincidunt nunc purus penatibus duis tempor adipiscing porta non ut magna rhoncus amet</li><li>Vel nisi natoque ridiculus platea urna eu habitasse dis, proin velit rhoncus augue</li><li>Risus auctor a rhoncus a nisi cum nascetur ut nunc ultricies dis</li><li>Nunc integer massa aliquet, turpis sit</li><li>Montes arcu enim, nec, scelerisque diam, eu natoque.</li></ol></div>",
+			"close-button": {
+				"enable": true,
+				"html": ""
+			}
+		},
+		"slides": [{
+				"slide-id": "slide-1",
+				"className": "content-top",
+				"poll": {
+					"enable": false
+				},
+				"html-content": {
+					"className": "",
+					"html": "<img src='{{imageServer.path}}/images/instance/carousel-image-1-690x460@2x.png' alt='graphic'>"
+				},
+				"meta-info": {
+					"enable": true,
+					"className": "",
+					"label": "Slide 1 label",
+					"caption": "Information about the slide, description here."
+				},
+				"notes-layer": {
+					"enable": true,
+					"className": "",
+					"html": "<p>Slide 1 notes layer</p>",
+					"close-button": {
+						"enable": true,
+						"html": ""
+					}
+				}
+			}, {
+				"slide-id": "slide-2",
+				"className": "content-top",
+				"poll": {
+					"enable": false
+				},
+				"html-content": {
+					"className": "",
+					"html": "<img src='{{imageServer.path}}/images/instance/carousel-image-2-690x460@2x.png' alt='graphic'>"
+				},
+				"meta-info": {
+					"enable": true,
+					"className": "",
+					"label": "Slide 2 label",
+					"caption": "Information about the slide, description here."
+				},
+				"notes-layer": {
+					"enable": true,
+					"className": "",
+					"html": "<p>Slide 2 notes layer</p>",
+					"close-button": {
+						"enable": true,
+						"html": ""
+					}
+				}
+			},
+			{
+				"slide-id": "slide-3",
+				"className": "content-top",
+				"poll": {
+					"enable": false
+				},
+				"html-content": {
+					"className": "",
+					"html": "<img src='{{imageServer.path}}/images/instance/carousel-image-3-690x460@2x.png' alt='graphic'>"
+				},
+				"meta-info": {
+					"enable": true,
+					"className": "",
+					"label": "Slide 3 label meta-info",
+					"caption": "Slide 3 Captions meta-info"
+				},
+				"notes-layer": {
+					"enable": false,
+					"className": "",
+					"html": "<h3>Slide-3 Notes Layer</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis interdum cursus. Sed faucibus placerat sollicitudin. Nullam porta enim a nunc cursus placerat. Maecenas luctus nisi non condimentum faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dapibus ac erat ut pellentesque. Phasellus urna ipsum, tincidunt et commodo ut, accumsan vel dui. Etiam venenatis massa vitae sem ornare, ut dignissim nunc feugiat. Nam nec dui vitae libero faucibus venenatis. Suspendisse dictum nunc sed tellus efficitur finibus. Praesent vestibulum nunc quis orci posuere, et posuere tortor varius. Cras rutrum turpis et elementum pulvinar. In id fringilla lectus. Maecenas nec varius arcu, nec tincidunt velit. Mauris auctor imperdiet lacus vel aliquet. Phasellus justo diam, suscipit at ornare in, iaculis ac lectus.</p>",
+					"close-button": {
+						"enable": true,
+						"html": "{{imageServer.path}}/images/template/modal-exit.svg"
+					}
+				}
+			}
+		],
+		"settings": {
+			"accessibility": false,
+			"adaptiveHeight": false,
+			"arrows": true,
+			"autoplay": false,
+			"autoplaySpeed": 2000,
+			"centerMode": false,
+			"centerPadding": "0px",
+			"className": "",
+			"customPaging": "",
+			"dots": false,
+			"draggable": false,
+			"easing": "",
+			"fade": false,
+			"focusOnSelect": false,
+			"initialSlide": 0,
+			"infinite": true,
+			"lazyLoad": false,
+			"pauseOnHover": false,
+			"slidesToShow": 1,
+			"slidesToScroll": 1,
+			"speed": 500,
+			"swipeToSlide": true,
+			"responsive": []
+		}
+	}],
 	"formulary": {
 		"path": ""
 	},
@@ -410,7 +845,55 @@ let json = {
 			"countryHide": false
 		}
 	},
-	"zoom-images": [],
+	"zoom-images": [{
+			"config-id": "zoom-image-1",
+			"image": {
+				"src": "{{imageServer.path}}/images/instance/small-zoom-image-medicine-345x230@2x.png",
+				"title": "Zoom 1 Title",
+				"alt": "graphic",
+				"className": "",
+				"id": ""
+			},
+			"enlarged": {
+				"enable": true,
+				"zoom-icon": true,
+				"image": {
+					"src": "{{imageServer.path}}/images/instance/zoom-image-medicine-800x533@2x.png",
+					"title": "Enlarged Zoom Image 1 Title",
+					"alt": "graphic",
+					"className": "",
+					"id": ""
+				},
+				"label": "Slide Label",
+				"caption": "Information about the slide, description here."
+			},
+			"responsive": []
+		},
+		{
+			"config-id": "zoom-image-2",
+			"image": {
+				"src": "{{imageServer.path}}/images/instance/small-zoom-image-dr-345x230@2x.png",
+				"title": "Zoom 2 Title",
+				"alt": "graphic",
+				"className": "",
+				"id": ""
+			},
+			"enlarged": {
+				"enable": true,
+				"zoom-icon": true,
+				"image": {
+					"src": "{{imageServer.path}}/images/instance/zoom-image-dr-800x533@2x.png",
+					"title": "Enlarged Zoom Image 2 Title",
+					"alt": "graphic",
+					"className": "",
+					"id": ""
+				},
+				"label": "Slide Label",
+				"caption": "Information about the slide, description here."
+			},
+			"responsive": []
+		}
+	],
 	"uld-banner": {
 		"enable": false,
 		"html-content": "",
@@ -450,25 +933,238 @@ let json = {
 		"title": "",
 		"items": []
 	},
-	"comments": [],
-	"media-slides": [],
+	"comments": [{
+        "config-id": "comments-1",
+        "viafoura-configs": {
+            "container-id": "infosite-demo"
+        },
+        "widget":
+        {
+            "html": ""
+        },
+        "drawer":
+        {
+            "path": "/comments/comments-1",
+            "header": "",
+            "close-button": "",
+            "terms": ""
+        }
+    }],
+	"media-slides": [{
+			"config-id": "media-slides-1",
+			"vertical": false,
+			"html-title": {
+				"enable": true,
+				"title": "Media Slides 1"
+			},
+			"media": {
+				"settings": {
+					"title": "Media Title",
+					"medium": "video",
+					"autoplay": false,
+					"source": "/delivery/d3/b8/d3b820bf-d64e-418f-a0ec-a47c6dfb7c03/251893_MTV_BreastCancer_Ep1_V4_Approved_2018-07-25_,400k,a96k,1000k,750k,3000k,2500k,4500k,.mp4",
+					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-video-tn-450x253@2x.png",
+					"duration": "05:31",
+					"ccFileRoot": "",
+					"ccInfo": []
+				},
+				"controls": {
+					"fullscreen": true
+				}
+			},
+			"slides": [{
+					"startTime": "00:00",
+					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-1-260x161@2x.png'>"
+				},
+				{
+					"startTime": "01:00",
+					"html-content": "<h3>Slide 2</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>"
+				},
+				{
+					"startTime": "03:00",
+					"html-content": "<h3>Slide 3</h3><ol><li><a href='https://www.lipsum.com/' target='_blank'>External Link</a></li><li><a href='isarticle-3' data-module='RouterLink'>Internal Link</a></li></ol>"
+				},
+				{
+					"startTime": "04:00",
+					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-2-260x167@2x.png'>"
+				}
+			],
+			"navigation-bar": {
+				"slide-counter": {
+					"enable": true,
+					"html": "Slide {{index}} of {{totalSlides}}"
+				},
+				"controls": {
+					"enable": true,
+					"icon": true,
+					"next": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/right-arrow.svg>",
+					"previous": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/left-arrow.svg>"
+				}
+			},
+			"responsive": []
+		},
+		{
+			"config-id": "media-slides-2",
+			"vertical": true,
+			"html-title": {
+				"enable": true,
+				"title": "Media Slides 2 - Vertical and with closed captioning"
+			},
+			"media": {
+				"settings": {
+					"title": "Tracking Title",
+					"medium": "video",
+					"autoplay": false,
+					"source": "/delivery/d3/b8/d3b820bf-d64e-418f-a0ec-a47c6dfb7c03/251893_MTV_BreastCancer_Ep1_V4_Approved_2018-07-25_,400k,a96k,1000k,750k,3000k,2500k,4500k,.mp4",
+					"poster": "/pi/editorial/studio/all_players_test/a__Start-end-bug/poster-1.jpg",
+					"duration": "05:31",
+					"ccFileRoot": "/mtv/metastatic-breast-cancer-s01/config/",
+					"ccInfo": [{
+						"lang": "en",
+						"file": "mbc-ep01.xml"
+					}]
+				},
+				"controls": {
+					"fullscreen": true
+				}
+			},
+			"slides": [{
+					"startTime": "00:00",
+					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-1-260x161@2x.png'>"
+				},
+				{
+					"startTime": "01:00",
+					"html-content": "<h3>Slide 2</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>"
+				},
+				{
+					"startTime": "03:00",
+					"html-content": "<h3>Slide 3</h3><ol><li><a href='https://www.lipsum.com/' target='_blank'>External Link</a></li><li><a href='/isarticle-3' data-module='RouterLink'>Internal Link</a></li></ol>"
+				},
+				{
+					"startTime": "04:00",
+					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-2-260x167@2x'>"
+				}
+			],
+			"navigation-bar": {
+				"slide-counter": {
+					"enable": true,
+					"html": "Slide {{index}} of {{totalSlides}}"
+				},
+				"controls": {
+					"enable": true,
+					"icon": false,
+					"next": "next",
+					"previous": "previous"
+				}
+			},
+			"responsive": []
+		}
+	],
 	"accordion": [{
 			"config-id": "accordion-1",
 			"index": 1,
 			"header": {
 				"image": {
 					"enable": true,
-					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.11/images/template/accordionArrow.png"
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
 				},
-				"html-content": "<h3>Accordion Example</h3>",
+				"html-content": "<h3>Treatment Discontinuation and Overall Response Rate Data from the Initial Analysis</h3>",
 				"buttons": {
 					"expand": "",
 					"collapse": ""
 				}
 			}
+		},
+		{
+			"config-id": "accordion-2",
+			"index": 1,
+			"header": {
+				"image": {
+					"enable": true,
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+				},
+				"html-content": "<h3>Accordion 2</h3>",
+				"buttons": {
+					"expand": "",
+					"collapse": ""
+				}
+			}
+		},
+		{
+			"config-id": "accordion-3",
+			"index": 1,
+			"header": {
+				"image": {
+					"enable": true,
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+				},
+				"html-content": "<h3>Accordion 3</h3>",
+				"buttons": {
+					"expand": "",
+					"collapse": ""
+				}
+			}
+		},
+		{
+			"config-id": "accordion-4",
+			"index": 1,
+			"header": {
+				"image": {
+					"enable": true,
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+				},
+				"html-content": "<h3>Accordion 4</h3>",
+				"buttons": {
+					"expand": "",
+					"collapse": ""
+				}
+			}
+		},
+		{
+			"config-id": "accordion-5",
+			"index": 1,
+			"header": {
+				"image": {
+					"enable": false,
+					"src": ""
+				},
+				"html-content": "<h3>Accordion 5</h3>",
+				"buttons": {
+					"expand": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/plus-accordion-icon.svg' />",
+					"collapse": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/minus-accordion-icon.svg' />"
+				}
+			}
 		}
 	],
-	"modal": []
+	"modal": [{
+			"config-id": "indications",
+			"index": 1,
+			"indications": false,
+			"modalClassName": "indications-modal",
+			"url": "{{app.app-server.path}}/modals/indications",
+			"button": {
+				"image": {
+					"enable": true,
+					"src": "/images/template/modal-exit.svg"
+				},
+				"text": ""
+			}
+		},
+		{
+			"config-id": "modal-2",
+			"index": 1,
+			"indications": false,
+			"modalClassName": "modal-2",
+			"url": "{{app.app-server.path}}/modals/modal-2",
+			"button": {
+				"image": {
+					"enable": false,
+					"src": ""
+				},
+				"text": "close"
+			}
+		}
+	]
 };
 
 function pageObjUpdate(num, value) {
@@ -583,6 +1279,62 @@ function videoPosterUpdate(
     controls: {
       fullscreen: true,
     },
+    "tracking-pixels": {
+      "start": "",
+      "25pct": "",
+      "50pct": "",
+      "75pct": "",
+      "100pct": ""
+  },
+        "chapters": {
+            "enable": true,
+            "ui-configs": {
+                "always-visible": {
+                    "enable": true,
+                    "auto-open": {
+                        "enable": false,
+                        "timer": 1000,
+                        "auto-hide": {
+                            "enable": false,
+                            "timer": 6000
+                        }
+                    }
+                },
+                "menu": {
+                    "hide-on-chapter-click": false,
+                    "heading": {
+                        "enable": true,
+                        "html-content": ""
+                    },
+                    "hide-icon": {
+                        "use-default": true,
+                        "html-content": ""
+                    }
+                }
+            },
+            "items": [
+                {
+                    "chapterName": "Introduction",
+                    "startTime": "00:05"
+                },
+                {
+                    "chapterName": "Chapter 1",
+                    "startTime": "00:10"
+                },
+                {
+                    "chapterName": "Chapter 2",
+                    "startTime": "00:15"
+                },
+                {
+                    "chapterName": "Chapter 3",
+                    "startTime": "00:20"
+                },
+                {
+                    "chapterName": "Chapter 4",
+                    "startTime": "00:25"
+                }
+            ]
+        }
   };
 
   return videoPoster;
@@ -630,6 +1382,13 @@ function audioPosterUpdate(
     controls: {
       fullscreen: false,
     },
+    "tracking-pixels": {
+      "start": "",
+      "25pct": "",
+      "50pct": "",
+      "75pct": "",
+      "100pct": ""
+    }
   };
 
   return audioPoster;
@@ -1004,18 +1763,18 @@ form.addEventListener("submit", function (e) {
     errors = [];
     errorBlock.innerHTML = errors;
 
-    json.app["app-server"]["path"] = json.app["app-server"]["path"].replace(
-      /IS([^"]|\\")*/g,
-      sfnumber
-    );
-    json.app["image-server"]["path"] = json.app["image-server"]["path"].replace(
-      /IS([^"]|\\")*/g,
-      sfnumber
-    );
-
+	json.app["app-server"]["path"] = json.app["app-server"]["path"].replace(
+		/IS([^"]|\\")*/g,
+		sfnumber
+	  );
+	  json.app["image-server"]["path"] = json.app["image-server"]["path"].replace(
+		/IS([^"]|\\")*/g,
+		sfnumber
+	  );
+	  
     // Tracking JSON Object
     json.tracking["SF-Number"] = sfnumber;
-    json.tracking.brandName = brandName;
+    json.tracking.brandName = brandName.trim();
     json.tracking.brandId = brandId;
     json.tracking.CP["tacticId"] = tcid;
     json.tracking.CP["activityId"] = activityId;
