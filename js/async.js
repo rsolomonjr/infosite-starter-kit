@@ -2,10 +2,10 @@
 let json = {
 	"app": {
 		"app-server": {
-			"path": "/infosites/IS-template-22.12.1"
+			"path": "/infosites/IS-template-22.14"
 		},
 		"image-server": {
-			"path": "/pi/sites/infosite/IS-template-22.12.1"
+			"path": "/pi/sites/infosite/IS-template-22.14"
 		}
 	},
 	"tracking": {
@@ -100,7 +100,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "Homepage",
-				"titleTag": "Homepage",
+				"titleTag": "Information from Industry",
 				"description": "Homepage"
 			}
 		},
@@ -110,7 +110,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "Treatment Guidelines",
-				"titleTag": "Article 1",
+				"titleTag": "Information from Industry",
 				"description": "Treatment Guidelines"
 			}
 		},
@@ -120,7 +120,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "Clinical Data",
-				"titleTag": "Article 2",
+				"titleTag": "Information from Industry",
 				"description": "Clinical Data"
 			}
 		},
@@ -130,7 +130,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "Efficacy and Safety Data",
-				"titleTag": "Article 3",
+				"titleTag": "Information from Industry",
 				"description": "Efficacy and Safety Data"
 			}
 		},
@@ -140,7 +140,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "Video: MOA",
-				"titleTag": "Article 4",
+				"titleTag": "Information from Industry",
 				"description": "Video: MOA"
 			}
 		},
@@ -150,7 +150,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "iframe",
-				"titleTag": "Article 5",
+				"titleTag": "Information from Industry",
 				"description": "iframe"
 			}
 		},
@@ -160,7 +160,7 @@ let json = {
 			"template": "doubleScroll",
 			"meta-data": {
 				"title": "Media: Podcast",
-				"titleTag": "Article 6",
+				"titleTag": "Information from Industry",
 				"description": "Media: Podcast"
 			}
 		},
@@ -170,7 +170,7 @@ let json = {
 			"template": "default",
 			"meta-data": {
 				"title": "iframe test",
-				"titleTag": "Article 7",
+				"titleTag": "Information from Industry",
 				"description": "iframe test"
 			}
 		}
@@ -400,37 +400,37 @@ let json = {
 			"playlist-items": [{
 					"media-id": "video1",
 					"title": "Video 1",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is a description 1"
 				},
 				{
 					"media-id": "video2",
 					"title": "Video 2",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is a description 2"
 				},
 				{
 					"media-id": "video3",
 					"title": "Video 3",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is a description 3"
 				},
 				{
 					"media-id": "video4",
 					"title": "Video 4",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is a description 4"
 				},
 				{
 					"media-id": "video5",
 					"title": "Video 5",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is a description 5"
 				},
 				{
 					"media-id": "audio1",
 					"title": "Audio 1",
-					"thumbnail": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"thumbnail": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"description": "This is audio-only media"
 				}
 			],
@@ -502,7 +502,7 @@ let json = {
 					"medium": "video",
 					"autoplay": false,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_1_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -524,6 +524,7 @@ let json = {
             "chapters": {
                 "enable": false,
                 "ui-configs": {
+                     "anchor": "left",
                     "always-visible": {
                         "enable": true,
                         "auto-open": {
@@ -578,7 +579,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_2_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -605,7 +606,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_3_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -625,7 +626,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_4_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -645,7 +646,7 @@ let json = {
 					"medium": "video",
 					"autoplay": true,
 					"source": "/delivery/aws/a8/4e/a84e7cd9-a7ed-34fc-8215-4e5f32a87c6d/FPOv1_640x480_5_,4500k,4500k-mbr,4500k-mbr10k,3000k,2500k,1000k,750k,450k,a96k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "00:30",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -672,7 +673,7 @@ let json = {
 					"medium": "audio",
 					"autoplay": true,
 					"source": "/delivery/d8/8d/d88d89b7-b333-4374-934d-5c0b57087d18/267440_ITP_S2_Ep1_V4_Approved_2018-12-10_,4500k,a96k,1000k,750k,3000k,400k,2500k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/template/mediaFPO.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/template/mediaFPO.png",
 					"duration": "05:48",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -963,7 +964,7 @@ let json = {
 					"medium": "video",
 					"autoplay": false,
 					"source": "/delivery/d3/b8/d3b820bf-d64e-418f-a0ec-a47c6dfb7c03/251893_MTV_BreastCancer_Ep1_V4_Approved_2018-07-25_,400k,a96k,1000k,750k,3000k,2500k,4500k,.mp4",
-					"poster": "/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-video-tn-450x253@2x.png",
+					"poster": "/pi/sites/infosite/IS-template-22.14/images/instance/media-slide-video-tn-450x253@2x.png",
 					"duration": "05:31",
 					"ccFileRoot": "",
 					"ccInfo": []
@@ -974,7 +975,7 @@ let json = {
 			},
 			"slides": [{
 					"startTime": "00:00",
-					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-1-260x161@2x.png'>"
+					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/instance/media-slide-slide-1-260x161@2x.png'>"
 				},
 				{
 					"startTime": "01:00",
@@ -986,7 +987,7 @@ let json = {
 				},
 				{
 					"startTime": "04:00",
-					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-2-260x167@2x.png'>"
+					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/instance/media-slide-slide-2-260x167@2x.png'>"
 				}
 			],
 			"navigation-bar": {
@@ -997,8 +998,8 @@ let json = {
 				"controls": {
 					"enable": true,
 					"icon": true,
-					"next": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/right-arrow.svg>",
-					"previous": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/left-arrow.svg>"
+					"next": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/right-arrow.svg>",
+					"previous": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/left-arrow.svg>"
 				}
 			},
 			"responsive": []
@@ -1030,7 +1031,7 @@ let json = {
 			},
 			"slides": [{
 					"startTime": "00:00",
-					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-1-260x161@2x.png'>"
+					"html-content": "<h3>Slide 1</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/instance/media-slide-slide-1-260x161@2x.png'>"
 				},
 				{
 					"startTime": "01:00",
@@ -1042,7 +1043,7 @@ let json = {
 				},
 				{
 					"startTime": "04:00",
-					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/instance/media-slide-slide-2-260x167@2x'>"
+					"html-content": "<h3>Slide 4</h3><img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/instance/media-slide-slide-2-260x167@2x'>"
 				}
 			],
 			"navigation-bar": {
@@ -1062,11 +1063,10 @@ let json = {
 	],
 	"accordion": [{
 			"config-id": "accordion-1",
-			"index": 1,
 			"header": {
 				"image": {
 					"enable": true,
-					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/accordionArrow.png"
 				},
 				"html-content": "<h3>Treatment Discontinuation and Overall Response Rate Data from the Initial Analysis</h3>",
 				"buttons": {
@@ -1077,11 +1077,10 @@ let json = {
 		},
 		{
 			"config-id": "accordion-2",
-			"index": 1,
 			"header": {
 				"image": {
 					"enable": true,
-					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/accordionArrow.png"
 				},
 				"html-content": "<h3>Accordion 2</h3>",
 				"buttons": {
@@ -1092,11 +1091,10 @@ let json = {
 		},
 		{
 			"config-id": "accordion-3",
-			"index": 1,
 			"header": {
 				"image": {
 					"enable": true,
-					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/accordionArrow.png"
 				},
 				"html-content": "<h3>Accordion 3</h3>",
 				"buttons": {
@@ -1111,7 +1109,7 @@ let json = {
 			"header": {
 				"image": {
 					"enable": true,
-					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/accordionArrow.png"
+					"src": "{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/accordionArrow.png"
 				},
 				"html-content": "<h3>Accordion 4</h3>",
 				"buttons": {
@@ -1122,7 +1120,6 @@ let json = {
 		},
 		{
 			"config-id": "accordion-5",
-			"index": 1,
 			"header": {
 				"image": {
 					"enable": false,
@@ -1130,15 +1127,14 @@ let json = {
 				},
 				"html-content": "<h3>Accordion 5</h3>",
 				"buttons": {
-					"expand": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/plus-accordion-icon.svg' />",
-					"collapse": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.12.1/images/template/minus-accordion-icon.svg' />"
+					"expand": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/plus-accordion-icon.svg' />",
+					"collapse": "<img src='{{imageServer.host}}/pi/sites/infosite/IS-template-22.14/images/template/minus-accordion-icon.svg' />"
 				}
 			}
 		}
 	],
 	"modal": [{
 			"config-id": "indications",
-			"index": 1,
 			"indications": false,
 			"modalClassName": "indications-modal",
 			"url": "{{app.app-server.path}}/modals/indications",
@@ -1152,7 +1148,6 @@ let json = {
 		},
 		{
 			"config-id": "modal-2",
-			"index": 1,
 			"indications": false,
 			"modalClassName": "modal-2",
 			"url": "{{app.app-server.path}}/modals/modal-2",
@@ -1166,6 +1161,7 @@ let json = {
 		}
 	]
 };
+
 
 function pageObjUpdate(num, value) {
 	const route = num === 0 ? "" : `isarticle-${num}`;
