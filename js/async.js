@@ -1226,20 +1226,18 @@ let polls = {
   },
 };
 
-
-function imageDir(imageName) { // Example imageName
-	let imageFolder = "";
-	 imageFolder = imageName === "mediaFPO.png" ? `template` : `instance`;
-	return imageFolder;
-   }
+function imageDir(imageName) {
+    // Determine the folder based on the imageName
+    return imageName === "mediaFPO.png" ? "template" : "instance";
+}
 
 function videoThumbnailUpdate(num, sf, videoTitleName, thumbnail) {
-  imageDir(thumbnail);
+  const videoThumbnailFolder = imageDir(thumbnail);
 
   let videoThumbnail = {
     "media-id": "video" + num,
     title: videoTitleName,
-    thumbnail: `/pi/sites/infosite/${sf}/images/${imageFolder}/${thumbnail}`,
+    thumbnail: `/pi/sites/infosite/${sf}/images/${videoThumbnailFolder}/${thumbnail}`,
     description: videoTitleName,
   };
 
@@ -1254,16 +1252,17 @@ function videoPosterUpdate(
   videoTime,
   vURL
 ) {
-  imageDir(posterName);
+	const videoPosterFolder =  imageDir(posterName);
 
   let videoPoster = {
+
     "config-id": "video" + numPoster,
     media: {
       title: videoPosterTitleName,
       medium: "video",
       autoplay: false,
       source: vURL,
-      poster: `/pi/sites/infosite/${sfNumber}/images/${imageFolder}/${posterName}`,
+      poster: `/pi/sites/infosite/${sfNumber}/images/${videoPosterFolder}/${posterName}`,
       duration: videoTime,
       ccFileRoot: "",
       ccInfo: [],
@@ -1337,12 +1336,12 @@ function videoPosterUpdate(
 }
 
 function audioThumbnailUpdate(num, sfAudioNum, audioTitleName, thumbnail) {
-  imageDir(thumbnail);
+  const audioThumbnailFolder = imageDir(thumbnail);
 
   let audioThumbnail = {
     "media-id": "audio" + num,
     title: audioTitleName,
-    thumbnail: `/pi/sites/infosite/${sfAudioNum}/images/${imageFolder}/${thumbnail}`,
+    thumbnail: `/pi/sites/infosite/${sfAudioNum}/images/${audioThumbnailFolder}/${thumbnail}`,
     description: audioTitleName,
   };
 
@@ -1357,7 +1356,7 @@ function audioPosterUpdate(
   audioTime,
   aURL
 ) {
-  imageDir(audioPosterName);
+  const audioPosterFolder = imageDir(audioPosterName);
 
   let audioPoster = {
     "config-id": "audio" + numAudioPoster,
@@ -1366,7 +1365,7 @@ function audioPosterUpdate(
       medium: "audio",
       autoplay: true,
       source: aURL,
-      poster: `/pi/sites/infosite/${sfAudioNumber}/images/${imageFolder}/${audioPosterName}`,
+      poster: `/pi/sites/infosite/${sfAudioNumber}/images/${audioPosterFolder}/${audioPosterName}`,
       duration: audioTime,
       ccFileRoot: "",
       ccInfo: [],
