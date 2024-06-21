@@ -1226,10 +1226,9 @@ let polls = {
   },
 };
 
-var imageFolder = "";
 
 function imageDir(imageName) { // Example imageName
-	const imageFolder = imageName === "mediaFPO.png" ? `template/${imageName}` : `instance/${imageName}`;
+	const imageFolder = imageName === "mediaFPO.png" ? `template/mediaFPO.png` : `instance/${imageName}`;
 	return imageFolder;
    }
 
