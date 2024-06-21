@@ -1228,7 +1228,8 @@ let polls = {
 
 
 function imageDir(imageName) { // Example imageName
-	const imageFolder = imageName === "mediaFPO.png" ? `template/mediaFPO.png` : `instance/${imageName}`;
+	let imageFolder = "";
+	 imageFolder = imageName === "mediaFPO.png" ? `template` : `instance`;
 	return imageFolder;
    }
 
